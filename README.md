@@ -21,9 +21,9 @@ If you want to colaborate with the project, feel free to reach us at [framework@
 
 <p>If you are using it in an Expert Advisor, follow the next steps.<br>
 <b>Warning</b> Do not do this steps if you are using it in a script or indicator.</p>
-<li>Place <b>FrameworkInit();</b> at the beginning of the <b>OnInit()<b> function of your expert advisor.</li>
-<li>Place <b>FrameworkDeInit();</b> at the beginning of the <b>OnDeInit()<b> function of your expert advisor.</li>
-<li>Place <b>FrameworkOnTick();</b> at the beginning of the <b>OnTick()<b> function of your expert advisor.</li>
+<li>Place <b>FrameworkInit();</b> at the beginning of the <b>OnInit()</b> function of your expert advisor.</li>
+<li>Place <b>FrameworkDeInit();</b> at the beginning of the <b>OnDeInit()</b> function of your expert advisor.</li>
+<li>Place <b>FrameworkOnTick();</b> at the beginning of the <b>OnTick()</b> function of your expert advisor.</li>
 </ol>
 
 <b>Setting up the framework</b>
