@@ -1,9 +1,9 @@
 //--- Will handle the screenshot of the chart
 
-class Screenshot
+class CScreenshot
 {
     //--- Constructor
-    Screenshot(string name, string path, string mode = "16:9", int resMultiplier = 1)
+    CScreenshot(string name, string path, string mode = "16:9", int resMultiplier = 1, int chartId = 0)
     {
         if(resMultiplier > 10)
             resMultiplier = 10;
@@ -14,6 +14,7 @@ class Screenshot
         m_multiplier = resMultiplier;
         m_ext = ".png";
         m_width = 1920 * m_multiplier;
+        m_chartId = chartId;
 
         if(m_mode == "21:9")
         {
@@ -47,6 +48,7 @@ private:
     int m_height;
     int m_multiplier;
     string m_mode;
+    int m_chartId;
 
     string lastScreenshotName;
     string lastScreenshotPath;
@@ -54,14 +56,14 @@ private:
 };
 
 //--- Will take a screenshot of the chart
-bool Screenshot::Take()
+bool CScreenshot::Take()
 {
     string screenshotName = m_name + "_" + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + m_ext;
     string screenshotPath = m_path + screenshotName;
     string screenshotFullPath = screenshotPath + screenshotName;
     screenshotFullPath += "_" + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + m_ext;
 
-    ChartScreenShot(ChartID(),screenshotPath, m_width, m_height, ALIGN_CENTER);
+    ChartScreenShot(m_chartId,screenshotPath, m_width, m_height, ALIGN_CENTER);
 
     if(!FileIsExist(screenshotFullPath))
     {
@@ -80,7 +82,7 @@ bool Screenshot::Take()
 }
 
 //--- Will delete the last screenshot taken
-bool Screenshot::DeleteLast()
+bool CScreenshot::DeleteLast()
 {
     if(!FileDelete(lastScreenshotFullPath))
     {
