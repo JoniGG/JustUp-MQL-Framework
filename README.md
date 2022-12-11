@@ -1,7 +1,13 @@
+<body>
+    <p align="center"><a href="https://symfony.com" target="_blank">
+        <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a405bc87-58fc-471b-8a07-f1ad1fb1fb52/Aadir_un_poco_de_texto.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221211%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221211T182935Z&X-Amz-Expires=86400&X-Amz-Signature=6f9a25b5edace6250eeaa4d9de75b7abe55a2caa87cfadff9cd2b1c2da32d348&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22A%25C3%25B1adir%2520un%2520poco%2520de%2520texto.png%22&x-id=GetObject">
+    </a></p>
+
+
 # JustUp-MQL-Framework
 The official Just Up Corporation's framework for Metaquotes Language 4 &amp; 5.
 
-### Wiki
+# Wiki
 USAGE:
 1. Download/Clone the repository into your MQL4/5 main folder
 2. Use #include <../JustUp-MQL-Framework/Main.mqh>
@@ -24,35 +30,37 @@ All the libraries will have a full wiki and usage examples in the path *librarie
 
 *The full wiki in the github repository will be launched soon!*
 
-### Libraries List
+## Libraries List
 Below will be listed all the libraries list and a short description of what does them do.
-**Classes**
+### Classes
 Here are the libraries that have multiple methods and which code is based on the class sintax.
 - 
 
-**Dictionaries**
+### Dictionaries
 Here are the libraries that allow you to get an string value from another value given in other type of variable.
 - 
 
-**Enumerators**
+### Enumerators
 Here are the libraries that contains enumerators. Very useful to use on the *input* or *extern* variable for a better user friendly setup.
 - 
 
-**Functions**
+### Functions
 Here are the functions that are by itself, with no relation to other functions. A function per library.
 - 
 
-**Packages**
+### Packages
 Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax.
 - 
 
-**Structures**
+### Structures
 Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience.
 - 
 
-### Understanding Naming
+## Understanding Naming
 Here will be a description of how I structured the naming in my code.
-**Classes & Structures**
+
+### Classes & Structures
+
 All classes will start with the letter "C". I.e. if I have a class called "Candles", it will be coded under the name "CCandles".
 In the other side, all the structure will start with the letter "S". I.e. if I have an structure called "Price" it'll be coded under the name "SPrice"
 
@@ -64,16 +72,16 @@ The internal class method of "GetSomething()" will be "m_GetSomething"
 
 These applies also to the private structure's variables.
 
-**Dictionaries & Functions**
+### Dictionaries & Functions
 These will be camel cased, so the first letter of each word of the name will be capitalized.
 I.e. If I have a function with name "Get My Name", it will be coded under the name "GetMyName()"
 The same applies to dictionaries due that are functions but with the intention of return a string variable as result of a conversion.
 
-**Enumerators**
+### Enumerators
 These will start with the word "ENUM", then a "_", and followed by the name capitalized. Every new word will be divided by "_".
 I.e. If I have an enumerator with the name "Days of the Month", it will be coded under the name "ENUM_DAYS_OF_MONTH".
 
-**Variables & Definitions**
+### Variables & Definitions
 All the variables will start with a lower-case letter and every new word will start with a capitalized letter.
 I.e. I will name a variable called "My Trades Logs" with the name "myTradesLogs".
 
@@ -83,7 +91,7 @@ I.e. On a definition called "My Definition" I will use MY_DEFINITION.
 The constants will have the initial letter "c" for be different to the regular variable that you can modify.
 I.e. The constant variable with name "pi" will be declared as "cPi".
 
-**Internal Structure**
+### Internal Structure
 The Internal Structure will be different in order to avoid you to use an internal made function or variable in an external mode.
 Also these will be private & protected, so you won't be able to call them by accident.
 It will have the characters "i_" using the same naming structure, except for the internal definition which will start and end with the character "_".
@@ -97,7 +105,7 @@ i_SMyStructure              |   SMyStructure
 i_ENUM_MY_ENUMERATOR        |   ENUM_MY_ENUMERATOR
 i_MyDictionary()            |   MyDictionary()
 
-### Credits
+## Credits
 Main Programmer - Jonathan Fernandez, CEO
 Collaborator (s):
 - N/A
