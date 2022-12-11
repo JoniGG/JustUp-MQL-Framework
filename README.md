@@ -28,27 +28,27 @@ All the libraries will have a full wiki and usage examples in the path *librarie
 
 Below will be listed all the libraries list and a short description of what does them do.
 
-**Classes** <br>
+**Classes** </b>
 Here are the libraries that have multiple methods and which code is based on the class sintax.
 - 
 
-**Dictionaries** <br>
+**Dictionaries** </b>
 Here are the libraries that allow you to get an string value from another value given in other type of variable.
 - 
 
-**Enumerators** <br>
+**Enumerators** </b>
 Here are the libraries that contains enumerators. Very useful to use on the *input* or *extern* variable for a better user friendly setup.
 - 
 
-**Functions** <br>
+**Functions** </b>
 Here are the functions that are by itself, with no relation to other functions. A function per library.
 - 
 
-**Packages** <br>
+**Packages** </b>
 Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax.
 - 
 
-**Structures** <br>
+**Structures** </b>
 
 Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience.
 - 
