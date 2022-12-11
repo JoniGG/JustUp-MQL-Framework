@@ -6,7 +6,7 @@
 #### Overview
 Just Up MQL Framework is an open-source Metaquotes Language framework managed by Jonathan Fernandez, Just Up Corporation CEO as main collaborator.
 
-<b>Colaborate<b>
+<b>Colaborate</b>
 If you want to colaborate with the project, feel free to reach us at [framework@justup.us](mailto:framework@justup.us "framework@justup.us")
 
 #### Installation
