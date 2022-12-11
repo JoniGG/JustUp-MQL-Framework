@@ -3,21 +3,21 @@
 //--- Place in the beginning of the OnStart() function.
 void FrameworkStart()
 {
-    Print("Loading _FRAMEWORK_NAME_ " v" + _FRAMEWORK_VERSION_STRING_ + "...");
+    Print("Loading " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "...");
     Print(_FRAMEWORK_NAME_ + " loaded successfully!");
 }
 
 //--- Place at the end of the OnStart() function.
 void FrameworkStop()
 {
-    Print("Thanks for using _FRAMEWORK_NAME_ " v" + _FRAMEWORK_VERSION_STRING_ + "!");
+    Print("Thanks for using " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "!");
     Print(_FRAMEWORK_NAME_ + " unloaded successfully!");
 }
 
 //--- Place in the beginning of the OnInit() function.
 void FrameworkInit()
 {
-    Print("Initializing _FRAMEWORK_NAME_ " v" + _FRAMEWORK_VERSION_STRING_ + "...");
+    Print("Initializing " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "...");
 
     //... Your code here
 
@@ -27,7 +27,7 @@ void FrameworkInit()
 //--- Place at the beginning of the Deinit() function.
 void FrameworkDeinit()
 {
-    Print("Deinitializing _FRAMEWORK_NAME_ " v" + _FRAMEWORK_VERSION_STRING_ + "...");
+    Print("Deinitializing " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "...");
 
     //... Your code here
 
