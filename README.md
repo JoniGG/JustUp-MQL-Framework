@@ -41,8 +41,8 @@ jonathanfernandezoficial@outlook.com
 ## New Update Expected
 No current date has been set.
 ### New Libraries to Incorporate
-- Candlestick Patterns class
-- Errors Descriptions from code (metatrader app & server, and internal framework)
+- Candlestick Patterns class (2, 3, & 4 candles patterns divided with a class or structure). It will include alerts, and notifications.
+- Position Management Class with hedging, grid, and multi-positions supports
 
 ### New Changes in current Libraries
 - No changes in process
@@ -74,7 +74,7 @@ No current date has been set.
     - WeekdayToString()
     - GetCharPos() added. It is a function that returns the position of a given character within the english alphabet.
     - GetCharFromPos() added. It is a function that returns the character in a given position within the english alphabet.
-    
+
 8. Mql4InMql5 Package added. This is a package that allows to code with the mql4 style in mql5. Made by @eromawyn in GitHub.
 
 
