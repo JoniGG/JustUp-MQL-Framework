@@ -50,7 +50,7 @@ Here are the functions that are by itself, with no relation to other functions. 
 
 ### Packages <br>
 Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax. <br>
-- 
+- None
 
 ### Structures <br>
 Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience. <br>
