@@ -20,7 +20,7 @@ If you want to colaborate with the project, feel free to reach us at [framework@
 ```
 
 <p>If you are using it in an Expert Advisor, follow the next steps.<br>
-**Warning** Do not do this steps if you are using it in a script or indicator.</p>
+<b>Warning</b> Do not do this steps if you are using it in a script or indicator.</p>
 <li>Place **FrameworkInit();**** at the beginning of the **OnInit()** function of your expert advisor.</li>
 <li>Place **FrameworkDeInit();** at the beginning of the **OnDeInit()** function of your expert advisor.</li>
 <li>Place **FrameworkOnTick();** at the beginning of the **OnTick()** function of your expert advisor.</li>
