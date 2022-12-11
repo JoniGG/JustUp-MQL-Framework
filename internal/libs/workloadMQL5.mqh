@@ -1,4 +1,5 @@
 //--- This library will include the 4 main libraries of the framework workload. MQL5
+#include "../../Main.mqh"
 
 //--- Place in the beginning of the OnStart() function.
 void FrameworkStart()

@@ -2,7 +2,7 @@
 #define _TIME_RELATED_ENUM_VERSION_ 1.0
 
 //--- Hour Enumerator
-enum Hour
+enum Hours
 {
    H00 = 0, // 0:00
    H01 = 1, // 1:00
@@ -31,7 +31,7 @@ enum Hour
 };
 
 //--- Day Enumerator
-enum Day
+enum Days
 {
    D01 = 1, // 1st
    D02 = 2, // 2nd
@@ -67,7 +67,7 @@ enum Day
 };
 
 //--- Month Enumerator
-enum Month
+enum Months
 {
    JAN = 1, // January
    FEB = 2, // February
@@ -84,7 +84,7 @@ enum Month
 };
 
 //--- Weekday Enumerator
-enum Weekday
+enum Weekdays
 {
    MON = 1, // Monday
    TUE = 2, // Tuesday

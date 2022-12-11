@@ -3,7 +3,7 @@
 #define _TIME_RELATED_DICTIONARY_VERSION_ 1.0
 
 //--- Hour Dictionary
-string HourToString(Hour hour)
+string HourToString(Hours hour)
 {
    switch (hour)
    {
@@ -36,7 +36,7 @@ string HourToString(Hour hour)
 }
 
 //--- Day Dictionary
-string DayToString(Day day)
+string DayToString(Days day)
 {
    switch (day)
    {
@@ -76,7 +76,7 @@ string DayToString(Day day)
 }
 
 //--- Month Dictionary
-string MonthToString(Month month)
+string MonthToString(Months month)
 {
    switch (month)
    {
@@ -97,7 +97,7 @@ string MonthToString(Month month)
 }
 
 //--- Weekday Dictionary
-string WeekdayToString(Weekday weekday)
+string WeekdayToString(Weekdays weekday)
 {
    switch (weekday)
    {
