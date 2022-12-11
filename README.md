@@ -19,9 +19,9 @@ If you want to colaborate with the project, feel free to reach us at [framework@
 
 <p>If you are using it in an Expert Advisor, follow the next steps.
 **Warning** Do not do this steps if you are using it in a script or indicator.</p>
-<li>Place ```cpp FrameworkInit();``` at the beginning of the `OnInit()` function of your expert advisor.</li>
-<li>Place `FrameworkDeInit();` at the beginning of the `OnDeInit()` function of your expert advisor.</li>
-<li>Place `FrameworkOnTick();` at the beginning of the `OnTick()` function of your expert advisor.</li>
+<li>Place **FrameworkInit();**** at the beginning of the **OnInit()** function of your expert advisor.</li>
+<li>Place **FrameworkDeInit();** at the beginning of the **OnDeInit()** function of your expert advisor.</li>
+<li>Place **FrameworkOnTick();** at the beginning of the **OnTick()** function of your expert advisor.</li>
 </ol>
 
 **Setting up the framework**
@@ -29,39 +29,39 @@ If you want to colaborate with the project, feel free to reach us at [framework@
 This settings are located in the folder *JustUp-MQL-Framework/internal* in a file with the name *settings.mqh*.
 Below will be explained all the settings variables and what do they do.</p>
 <ol>
-<li>`_ALLOW_INTERFACE_`: This will load or not the framework interface when loading it on an expert advisor</li>
-<li>`_DEACTIVATE_LOGO_`: This will load the framework logo to the chart when loading it on an expert advisor</li>
-<li>`_ALLOW_ALERTS_`: This will allow or not that the framework send error alerts to the metatrader 4/5 terminal when used on an expert advisor</li>
-<li>`_ALLOW_NOTIFICATIONS_`: This will allow or not sending notification to the mobile device if there's an error in the framework when used on an expert advisor</li>
-<li>`_ALLOW_LOGS_`: This will allow or not saving logs in a logs file in the framework folder</li>
-<li>`_ALLOW_DEBUG_`: This will allow or not showing debug messages using the `Print()` function</li>
-<li>`_ALLOW_DEBUG_LOGS_`: This will allow or not saving debug logs in the logs file in the framework folder</li>
-<li>`_LANGUAGE_`: This will be the language shown in the interface and logs. Currently only does support english</li>
+<li>**_ALLOW_INTERFACE_**: This will load or not the framework interface when loading it on an expert advisor</li>
+<li>**_DEACTIVATE_LOGO_**: This will load the framework logo to the chart when loading it on an expert advisor</li>
+<li>**_ALLOW_ALERTS_**: This will allow or not that the framework send error alerts to the metatrader 4/5 terminal when used on an expert advisor</li>
+<li>**_ALLOW_NOTIFICATIONS_**: This will allow or not sending notification to the mobile device if there's an error in the framework when used on an expert advisor</li>
+<li>**_ALLOW_LOGS_**: This will allow or not saving logs in a logs file in the framework folder</li>
+<li>**_ALLOW_DEBUG_**: This will allow or not showing debug messages using the **Print()** function</li>
+<li>**_ALLOW_DEBUG_LOGS_**: This will allow or not saving debug logs in the logs file in the framework folder</li>
+<li>**_LANGUAGE_**: This will be the language shown in the interface and logs. Currently only does support english</li>
 </ol>
 
 #### Folders Structure
 <ul>
-    <li>`internal`: This folder will include all the internal files of the framework. Do not modify anything from here except the settings.mqh file.
+    <li>**internal**: This folder will include all the internal files of the framework. Do not modify anything from here except the settings.mqh file.
         <ul>
-            <li>`data`: This folder will contain all the data of the framework, including internal constants</li>
-            <li>`logs`: This folder will include all the logs files of the framework, divided by days and sessions
+            <li>**data**: This folder will contain all the data of the framework, including internal constants</li>
+            <li>**logs**: This folder will include all the logs files of the framework, divided by days and sessions
                 <ul>
-                    <li>`by_days`: This folder will include all the logs files divided on each day. 1 day per log, based on the server time</li>
-                    <li>`by_sessions`: This folder will include all the logs files divided on each session. 1 session is formed when the framework is loaded, and finish when it is unloaded</li>
+                    <li>**by_days**: This folder will include all the logs files divided on each day. 1 day per log, based on the server time</li>
+                    <li>**by_sessions**: This folder will include all the logs files divided on each session. 1 session is formed when the framework is loaded, and finish when it is unloaded</li>
                 </ul>
-            <li>`res`: The resources folder. It will have all the images that are used in the interfaces of the framework</li>
-            <li>`libs`: This folder will contain all the internal libraries such as the interface and logging library</li>
-            <li>`lang`: This folder will contain all the languages divided in files</li>
+            <li>**res**: The resources folder. It will have all the images that are used in the interfaces of the framework</li>
+            <li>**libs**: This folder will contain all the internal libraries such as the interface and logging library</li>
+            <li>**lang**: This folder will contain all the languages divided in files</li>
         </ul>
     </li>
-    <li>`common`: This folder will include all the libraries that are compatible on both language versions; MQL4 & MQL5
+    <li>**common**: This folder will include all the libraries that are compatible on both language versions; MQL4 & MQL5
         <ul>
-            <li>`classes`: This folder will include all the libraries which code is made with a class structure</li>
-            <li>`functions`: This folder will include all the libraries which code is made with a function structure</li>
-            <li>`strucs`: This folder will include all the libraries that have been made using structures</li>
-            <li>`enums`: This folder will have all the enumerators</li>
-            <li>`dics`: This folder will have all the dictionaries</li>
-            <li>`packages`: This folder will have all the function packages such as Mql4InMql5.mqh</li>
+            <li>**classes**: This folder will include all the libraries which code is made with a class structure</li>
+            <li>**functions**: This folder will include all the libraries which code is made with a function structure</li>
+            <li>**strucs**: This folder will include all the libraries that have been made using structures</li>
+            <li>**enums**: This folder will have all the enumerators</li>
+            <li>**dics**: This folder will have all the dictionaries</li>
+            <li>**packages**: This folder will have all the function packages such as Mql4InMql5.mqh</li>
         </ul>
     </li>
     <li>changelogs: This folder will include all the changelogs files</li>
@@ -70,7 +70,7 @@ Below will be explained all the settings variables and what do they do.</p>
 
 #### Libraries List
 <p>The framework has a lot of libraries that can be used in your scripts, indicators and expert advisors. Below will be listed all the libraries.
-    All the libraries will have a self readme file with the usage and examples in the `library_readmes` folder.</p>
+    All the libraries will have a self readme file with the usage and examples in the **library_readmes** folder.</p>
 <ol>
     ...
 </ol>
