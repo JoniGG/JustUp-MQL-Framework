@@ -37,12 +37,25 @@ jonathanfernandezoficial@outlook.com
 ## New Update Expected
 No current date has been set.
 ### New Libraries to Incorporate
-- .Set Files reading for real-time EA settings change
+- Candlestick Patterns class
 
 ### New Changes in current Libraries
 - No changes in process
 
 ## Changes Log
+### Version 1.01
+1. The FilesClass library has been modified. The following changes were made:
+    - Added the function ReadLine() for reading an specific line instead of the first line only
+    - Added the function ReplaceLine() for replacing an specific line with a new argument
+    - Added the function DeleteLine() for deleting a single line content
+    - Added the function GetLineNum() for returning the line number where is an specific value
+    - Added the function GetFileName() for returning the file name (i.e MyFile.txt)
+    - Added the function GetFilePath() for returning the file path
+    - Added the function GetFileType() for returning the file type in the enum format
+    - Added the function IsCommon() for returning true or false if is in the common folder or not
+    - Added the function GetFileExtension() for returning the file extension in the string format
+    - Added the function MoveFile() for moving the file to another folder
+
 ### Version 1.00
 1. The following list of libraries were added:
     - DiscordClass: Helps sending messages and chart screenshot to a discord channel

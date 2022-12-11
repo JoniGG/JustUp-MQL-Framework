@@ -27,6 +27,16 @@ class CFiles
     bool ReplaceLine(string line, int lineNum);
     bool IsEmpty();
     string ReadFirstLine();
+    string ReadLine(int lineNum, int offset=0);
+    bool DeleteLine(int lineNum);
+    int GetLineNum(string valueOfLine);
+    string GetFileName();
+    string GetFilePath();
+    FileType GetFileType();
+    bool IsCommon();
+    string GetFileExtension();
+    bool MoveFile(string newFileName, string newFilePath, bool inCommonFolder=false);
+
 
 private:
    string m_fileName;
@@ -150,28 +160,6 @@ bool CFiles::ReplaceBody(string body)
     return res;
 }
 
-//--- Replaces a line of the file
-bool CFiles::ReplaceLine(string line, int lineNum)
-{
-    long handle = GetFileHandle();
-    bool res = false;
-
-    //--- Replaces a line of the file
-    FileSeek(m_hFile, 0, SEEK_SET);
-    for(int i = 0; i < lineNum; i++)
-    {
-        FileReadString(m_hFile);
-    }
-    if(FileWrite(m_hFile, line))
-    {
-        res = true;
-    }
-
-    FileClose(m_hFile);
-
-    return res;
-}
-
 //--- Checks if the file is empty
 bool CFiles::IsEmpty()
 {
@@ -184,7 +172,6 @@ bool CFiles::IsEmpty()
     {
         res = true;
     }
-
     FileClose(m_hFile);
 
     return res;
@@ -202,6 +189,209 @@ string CFiles::ReadFirstLine()
 
     FileClose(m_hFile);
     
+    return res;
+}
+
+//--- Reads a line of the file
+string CFiles::ReadLine(int lineNum, int offset=0)
+{
+    long handle = GetFileHandle();
+    string res = "";
+    int max_i = lineNum + offset;
+
+    //--- Reads a line of the file
+    FileSeek(m_hFile, 0, SEEK_SET);
+    for(int i = 0; i < max_i; i++)
+    {
+        FileReadString(m_hFile);
+    }
+    res = FileReadString(m_hFile);
+
+    FileClose(m_hFile);
+
+    return res;
+}
+
+//--- Replaces a line of the file
+bool CFiles::ReplaceLine(string line, int lineNum)
+{
+    long handle = GetFileHandle();
+    bool res = false;
+    string Body[] = {""};
+
+    //--- Replaces a line of the file
+    FileSeek(m_hFile, 0, SEEK_SET);
+
+    int i = 0;
+
+    while(!FileIsEnding(m_hFile))
+    {
+      if(i != lineNum)
+      {
+        Body[i] = FileReadString(m_hFile);
+      }
+      else
+      {
+        Body[i] = line;
+      }
+
+      i++;
+    }
+
+    FileClose(m_hFile);
+
+    DeleteFile();
+    CreateFile("");
+
+    handle = GetFileHandle();
+
+    for (int o = 0; o < i; o++)
+    {
+      AddLine(Body[o]);
+    }
+    
+    FileClose(m_hFile);
+
+    return res;
+}
+
+//--- Deletes a line of the file
+bool CFiles::DeleteLine(int lineNum)
+{
+    long handle = GetFileHandle();
+    bool res = false;
+    string Body[] = {""};
+
+    //--- Replaces a line of the file
+    FileSeek(m_hFile, 0, SEEK_SET);
+
+    int i = 0;
+
+    while(!FileIsEnding(m_hFile))
+    {
+      if(i != lineNum)
+      {
+        Body[i] = FileReadString(m_hFile);
+      }
+
+      i++;
+    }
+
+    FileClose(m_hFile);
+
+    DeleteFile();
+    CreateFile("");
+
+    handle = GetFileHandle();
+
+    for (int o = 0; o < i; o++)
+    {
+      AddLine(Body[o]);
+    }
+    
+    FileClose(m_hFile);
+
+    return res;
+}
+
+//--- Return the line number of an specific string
+int CFiles::GetLineNum(string valueOfLine)
+{
+    long handle = GetFileHandle();
+    int res = 0;
+
+    //--- Return the line number of an specific string
+    FileSeek(m_hFile, 0, SEEK_SET);
+
+    while(!FileIsEnding(m_hFile))
+    {
+      if(FileReadString(m_hFile) == valueOfLine)
+      {
+        FileClose(m_hFile);
+        return res;
+      }
+      res++;
+    }
+
+    FileClose(m_hFile);
+
+    return -1;
+}
+
+//--- Return the file name
+string CFiles::GetFileName()
+{
+    return m_fileName;
+}
+
+//--- Return the file path
+string CFiles::GetFilePath()
+{
+    return m_filePath;
+}
+
+//--- Return the file type
+FileType CFiles::GetFileType()
+{
+    return m_fileType;
+}
+
+//--- Return if it is in the common folder or not
+bool CFiles::IsCommon()
+{
+    return m_inCommonFolder;
+}
+
+//--- Return the file extension
+string CFiles::GetFileExtension()
+{
+    string ext = "FILE_TYPE_UNKNOWN";
+
+    if(m_fileType == FILE_TYPE_TEXT)
+    {
+        ext = ".txt";
+    }
+    else if(m_fileType == FILE_TYPE_BINARY)
+    {
+        ext = ".bin";
+    }
+    else if (m_fileType == FILE_TYPE_CSV)
+    {
+        ext = ".csv";
+    }
+    
+    return ext;
+}
+
+//--- Move the file to another folder
+bool CFiles::MoveFile(string newFileName, string newFilePath, bool inCommonFolder=false)
+{
+    bool res = false;
+
+    //--- Move the file to another folder
+    if(m_inCommonFolder)
+    {
+        if(FileMove(m_filePath + m_fileName,FILE_COMMON, newFilePath + newFileName, FILE_COMMON|FILE_REWRITE))
+        {
+            res = true;
+        }
+    }
+    else
+    {
+        if(FileMove(m_filePath + m_fileName, 0, newFilePath + newFileName, FILE_REWRITE))
+        {
+            res = true;
+        }
+    }
+
+    //--- If the file was moved, update the file name and path
+    if(res)
+    {
+        m_fileName = newFileName;
+        m_filePath = newFilePath;
+        m_inCommonFolder = inCommonFolder;
+    }
+
     return res;
 }
 
