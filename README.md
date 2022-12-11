@@ -1,89 +1,207 @@
-<body>
-    <p align="center"><a href="https://symfony.com" target="_blank">
+<p align="center"><a href="https://symfony.com" target="_blank">
         <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a405bc87-58fc-471b-8a07-f1ad1fb1fb52/Aadir_un_poco_de_texto.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221211%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221211T182935Z&X-Amz-Expires=86400&X-Amz-Signature=6f9a25b5edace6250eeaa4d9de75b7abe55a2caa87cfadff9cd2b1c2da32d348&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22A%25C3%25B1adir%2520un%2520poco%2520de%2520texto.png%22&x-id=GetObject">
     </a></p>
-    
-    #### Overview
-    Just Up MQL Framework is an open-source Metaquotes Language framework managed by Jonathan Fernandez, Just Up Corporation CEO as main collaborator.
-    
-    <b>Colaborate</b>
-    If you want to colaborate with the project, feel free to reach us at [framework@justup.us](mailto:framework@justup.us "framework@justup.us")
-    
-    #### Installation
-    <ol>
-    <li>Download or clone the repository to your computer. </li>
-    <li>Copy the files into a folder with the name *JustUp-MQL-Framework* in your MQL4/5 base folder</li>
-    <li>Place the code line below in your scrip/ea main file header</li>
-    
-    ```cpp
-    #include <../JustUp-MQL-Framework/Main.mqh>
-    ```
-    
-    <p>If you are using it in an Expert Advisor, follow the next steps.<br>
-    <b>Warning</b> Do not do this steps if you are using it in a script or indicator.</p>
-    <li>Place <b>FrameworkInit();</b> at the beginning of the <b>OnInit()</b> function of your expert advisor.</li>
-    <li>Place <b>FrameworkDeInit();</b> at the beginning of the <b>OnDeInit()</b> function of your expert advisor.</li>
-    <li>Place <b>FrameworkOnTick();</b> at the beginning of the <b>OnTick()</b> function of your expert advisor.</li>
-    </ol>
-    
-    <b>Setting up the framework</b>
-    <p>The framework has some settings that you can adjust to your own style and needs.<br>
-    This settings are located in the folder *JustUp-MQL-Framework/internal* in a file with the name *settings.mqh*.
-    Below will be explained all the settings variables and what do they do.</p>
-    <ol>
-    <li><b>_ALLOW_INTERFACE_</b>: This will load or not the framework interface when loading it on an expert advisor</li>
-    <li><b>_DEACTIVATE_LOGO_</b>: This will load the framework logo to the chart when loading it on an expert advisor</li>
-    <li><b>_ALLOW_ALERTS_</b>: This will allow or not that the framework send error alerts to the metatrader 4/5 terminal when used on an expert advisor</li>
-    <li><b>_ALLOW_NOTIFICATIONS_</b>: This will allow or not sending notification to the mobile device if there's an error in the framework when used on an expert advisor</li>
-    <li><b>_ALLOW_LOGS_</b>: This will allow or not saving logs in a logs file in the framework folder</li>
-    <li><b>_ALLOW_DEBUG_</b>: This will allow or not showing debug messages using the <b>Print()</b> function</li>
-    <li><b>_ALLOW_DEBUG_LOGS_</b>: This will allow or not saving debug logs in the logs file in the framework folder</li>
-    <li><b>_LANGUAGE_</b>: This will be the language shown in the interface and logs. Currently only does support english</li>
-    </ol>
-    
-    #### Folders Structure
-    <ul>
-        <li><b>internal</b>: This folder will include all the internal files of the framework. Do not modify anything from here except the settings.mqh file.
-            <ul>
-                <li><b>data</b>: This folder will contain all the data of the framework, including internal constants</li>
-                <li><b>logs</b>: This folder will include all the logs files of the framework, divided by days and sessions
-                    <ul>
-                        <li><b>by_day</b>: This folder will include all the logs files divided on each day. 1 day per log, based on the server time</li>
-                        <li><b>by_session</b>: This folder will include all the logs files divided on each session. 1 session is formed when the framework is loaded, and finish when it is unloaded</li>
-                    </ul>
-                <li><b>res</b>: The resources folder. It will have all the images that are used in the interfaces of the framework</li>
-                <li><b>libs</b>: This folder will contain all the internal libraries such as the interface and logging library</li>
-                <li><b>lang</b>: This folder will contain all the languages divided in files</li>
-            </ul>
-        </li>
-        <li><b>common</b>: This folder will include all the libraries that are compatible on both language versions; MQL4 & MQL5
-            <ul>
-                <li><b>classes</b>: This folder will include all the libraries which code is made with a class structure</li>
-                <li><b>functions</b>: This folder will include all the libraries which code is made with a function structure</li>
-                <li><b>strucs</b>: This folder will include all the libraries that have been made using structures</li>
-                <li><b>enums</b>: This folder will have all the enumerators</li>
-                <li><b>dics</b>: This folder will have all the dictionaries</li>
-                <li><b>packages</b>: This folder will have all the function packages such as Mql4InMql5.mqh</li>
-            </ul>
-        </li>
-        <li><b>changelogs</b>: This folder will include all the changelogs files</li>
-        <li><b>libraries_readme</b>: This folder will include all the readme files of the libraries</li>
-    </ul>
-    
-    #### Libraries List
-    <p>The framework has a lot of libraries that can be used in your scripts, indicators and expert advisors. Below will be listed all the libraries.
-        All the libraries will have a self readme file with the usage and examples in the <b>library_readmes</b> folder.</p>
-    <ol>
-        ...
-    </ol>
-    
-    #### Credits
-    <p>The framework has been made by Jonathan Fernandez, Just Up Corporation CEO. The framework is open-source and can be used by anyone.
-        The framework includes a lot of libraries that have been made by other people. Below will be listed all the credits of the libraries.</p>
-    <ol>
-        ...
-    </ol>
-    
-    #### License
-    <p>The framework is under the MIT License. You can read the license in the <b>LICENSE</b> file.</p>
-    </body>
+
+# JustUp-MQL-Framework
+Just Up MQL Framework is an open-source Metaquotes Language framework managed by Jonathan Fernandez, Just Up Corporation CEO as main collaborator.
+
+### Wiki
+USAGE:
+1. Download/Clone the repository into your MQL4/5 main folder
+2. Use #include <../JustUp-MQL-Framework/Main.mqh>
+
+If you are using it in an expert advisor...
+1. Call FrameworkInit() in your OnInit() function.
+2. Call FrameworkDeInit() in your OnDeInit() function.
+3. Call FrameworkOnTick() in your OnTick() function.
+4. Call FrameworkOnChart() in your OnChartEvent() function.
+
+If you are using it in a script...
+1. Call FrameworkStart() at the beginning of your OnStart() function.
+2. Call FrameworkStop() at the end of your OnStart() function.
+
+It is all set-up. You just need to adjust the settings of the framework as you want it.
+All the settings are found in the path *internal/settings.mqh*.
+To make a change just adjust the definition value as you like.
+
+All the libraries will have a full wiki and usage examples in the path *libraries_readme/library_name.md*
+
+*The full wiki in the github repository will be launched soon!*
+
+### Libraries List
+Below will be listed all the libraries list and a short description of what does them do.
+**Classes**
+Here are the libraries that have multiple methods and which code is based on the class sintax.
+- 
+
+**Dictionaries**
+Here are the libraries that allow you to get an string value from another value given in other type of variable.
+- 
+
+**Enumerators**
+Here are the libraries that contains enumerators. Very useful to use on the *input* or *extern* variable for a better user friendly setup.
+- 
+
+**Functions**
+Here are the functions that are by itself, with no relation to other functions. A function per library.
+- 
+
+**Packages**
+Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax.
+- 
+
+**Structures**
+Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience.
+- 
+
+### Understanding Naming
+Here will be a description of how I structured the naming in my code.
+**Classes & Structures**
+All classes will start with the letter "C". I.e. if I have a class called "Candles", it will be coded under the name "CCandles".
+In the other side, all the structure will start with the letter "S". I.e. if I have an structure called "Price" it'll be coded under the name "SPrice"
+
+*Private Class Variables & Methods*
+These will start with the letter "m" and the character "_" at the beginning, following then the external naming structure.
+I.e.
+The internal class variable of "nameOfDoctor" will be "m_nameOfDoctor"
+The internal class method of "GetSomething()" will be "m_GetSomething"
+
+These applies also to the private structure's variables.
+
+**Dictionaries & Functions**
+These will be camel cased, so the first letter of each word of the name will be capitalized.
+I.e. If I have a function with name "Get My Name", it will be coded under the name "GetMyName()"
+The same applies to dictionaries due that are functions but with the intention of return a string variable as result of a conversion.
+
+**Enumerators**
+These will start with the word "ENUM", then a "_", and followed by the name capitalized. Every new word will be divided by "_".
+I.e. If I have an enumerator with the name "Days of the Month", it will be coded under the name "ENUM_DAYS_OF_MONTH".
+
+**Variables & Definitions**
+All the variables will start with a lower-case letter and every new word will start with a capitalized letter.
+I.e. I will name a variable called "My Trades Logs" with the name "myTradesLogs".
+
+In the other side, all the definitions will be named with all the letters capitalized and divided by "_".
+I.e. On a definition called "My Definition" I will use MY_DEFINITION.
+
+The constants will have the initial letter "c" for be different to the regular variable that you can modify.
+I.e. The constant variable with name "pi" will be declared as "cPi".
+
+**Internal Structure**
+The Internal Structure will be different in order to avoid you to use an internal made function or variable in an external mode.
+Also these will be private & protected, so you won't be able to call them by accident.
+It will have the characters "i_" using the same naming structure, except for the internal definition which will start and end with the character "_".
+I.e.
+*Internal Version*          |   *External Version*
+_FRAMEWORK_NAME_            |   FRAMEWORK_INIT_SUCCEED
+i_myVariable                |   myVariable
+i_MyFunction()              |   MyFunction()
+i_CMyClass                  |   CMyClass
+i_SMyStructure              |   SMyStructure
+i_ENUM_MY_ENUMERATOR        |   ENUM_MY_ENUMERATOR
+i_MyDictionary()            |   MyDictionary()
+
+### Credits
+Main Programmer - Jonathan Fernandez, CEO
+Collaborator (s):
+- N/A
+
+Other public libraries were included into this framework, all the credits will be listed below:
+- @szagar in GitHub
+    - DateTime Structure Library
+    - Some functions for the FunctionPkg Library
+- @eromawyn in GitHub
+    - Mql4InMql5 Package
+
+## Colaborate
+If you want to collaborate with the project feel free to contact me at 
+framework@justup.us
+
+If you want to **Push** a file to the repository, please use the open *branch* called **Open**.
+All the files pushed to that branch will be reviewed, origanized, and pushed to the **main branch** by me after testing them.
+
+So I do recommend to pull from the *main branch* and push to the *open brach*.
+
+## Known Bugs
+No known bugs at this moment. 
+If you have found a bug, or fixed a bug and want to share it and include it to the repository, please, feel free to contact me at
+framework@justup.us or just open an issue at GitHub.
+
+## New Updates Expected
+No current date has been set.
+
+### Working with Versions & Releases
+The version will be structured by x.y.z.
+- An increment in "z" is just a patch for a bug that maybe can modify how the framework work but do not include any new feature or library. Just a bug fix. This version will be compatible with the prior versions with the same "x.y" number.
+- An increment of "y" will be a new update which can include or not patch for any bugs, but will include new features and/or libraries. These are compatible with prior "x" versions.
+- An increment of "x" will be a new major update which include new features, libraries, patchs, and code structure. This version are not compatible with any prior "x.y.z" version number.
+
+The releases will be made only on a minor & major update (x & y). Only will be made if the repository in that specific version has been tested and it is a stable version.
+However, this does not guarantee that will not be any bug. All the known bugs at the release will be listed at the end of the document, and can be any unknown bug to be fixed on next "y" or "z" updates.
+
+A normal update with a release could mean that the library incorporated has not been tested yet, or not deeply tested and can have fatal errors on it.
+
+### New Libraries to Incorporate
+- Candlestick Patterns class (2, 3, & 4 candles patterns divided with a class or structure). It will include alerts, and notifications.
+- Position Management Class with hedging, grid, and multi-positions supports
+
+### New Changes in current Libraries
+- No changes in process
+
+## Changes Log
+### Version 1.0.0
+*Work in progress...*
+
+### Version 0.2.0
+1. Constant File improvement
+2. Initialization & Deinitialization of the framework has been improved
+3. Upgrade of the FunctionPkg Library. See the list below:
+    - IsLondonDLS() added. It is a function that return true if we're in the London Daylight Saving time. Supports from 2000 to 2029.
+    - IsNewYorkDLS() added. It is a function that return true if we're in the New York Daylight Saving time. Supports from 2000 to 2029.
+    - GetErrorDescription() added. Return the error description from a given error code.
+    - RGB() added. Make a color from rgb
+    - CompareDoubles() added. Compares 2 doubles with a very good precision.
+    - MathHope() added. Calculates the Mathematical Hope
+
+4. Added the library Screenshot Class: It helps to take a chart screenshot and manage the last screenshot taken
+5. DateTime Structure added. This is an extension of the MqlDateTime structure made by @szagar in GitHub
+6. Added the Enumerators Library. It is a set of enumerators ready to be used. It Includes:
+    - Hour
+    - Day
+    - Month
+    - Weekday
+
+7. Added Dictionaries Library. It is a set of dictionaries ready to be used. It supports the enumerators format. It includes:
+    - HourToString()
+    - DayToString()
+    - MonthToString()
+    - WeekdayToString()
+    - GetCharPos() added. It is a function that returns the position of a given character within the english alphabet.
+    - GetCharFromPos() added. It is a function that returns the character in a given position within the english alphabet.
+
+8. Mql4InMql5 Package added. This is a package that allows to code with the mql4 style in mql5. Made by @eromawyn in GitHub.
+
+
+### Version 0.1.0
+1. The FilesClass library has been modified. The following changes were made:
+    - Added the function ReadLine() for reading an specific line instead of the first line only
+    - Added the function ReplaceLine() for replacing an specific line with a new argument
+    - Added the function DeleteLine() for deleting a single line content
+    - Added the function GetLineNum() for returning the line number where is an specific value
+    - Added the function GetFileName() for returning the file name (i.e MyFile.txt)
+    - Added the function GetFilePath() for returning the file path
+    - Added the function GetFileType() for returning the file type in the enum format
+    - Added the function IsCommon() for returning true or false if is in the common folder or not
+    - Added the function GetFileExtension() for returning the file extension in the string format
+    - Added the function MoveFile() for moving the file to another folder
+
+### Version 0.0.1
+1. The following list of libraries were added:
+    - DiscordClass: Helps sending messages and chart screenshot to a discord channel
+    - TelegramClass: Helps sending message and files to a Telegram Channel
+    - FilesClass: Helps handling all the tasks with a file
+    - LogsFileClass: Helps logging some logs into a file with a predefined format
+    - NewCandleClass:  Handles the event of a new candle in multiple timeframes
+    - FunctionsPkg: A package will multiple functions. The function added on this version is:
+        - CalculateLotSize(): Returns the lot size for an specific position
+2. The initial files and some internal constants and settings were generated

@@ -24,6 +24,12 @@
     <li>Place <b>FrameworkInit();</b> at the beginning of the <b>OnInit()</b> function of your expert advisor.</li>
     <li>Place <b>FrameworkDeInit();</b> at the beginning of the <b>OnDeInit()</b> function of your expert advisor.</li>
     <li>Place <b>FrameworkOnTick();</b> at the beginning of the <b>OnTick()</b> function of your expert advisor.</li>
+    <li>Place <b>FrameworkOnChart();</b> at the beginning of the <b>OnChartEvent()</b> function of your expert advisor.</li>
+
+    <p>If you are using it in an Script, follow the next steps.<br>
+        <b>Warning</b> Do not do this steps if you are using it in an EA or indicator.</p>
+        <li>Place <b>FrameworkStart();</b> at the beginning of the <b>OnStart()</b> function of your script.</li>
+        <li>Place <b>FrameworkStop();</b> at the end of the <b>OnStart()</b> function of your script.</li>
     </ol>
     
     <b>Setting up the framework</b>

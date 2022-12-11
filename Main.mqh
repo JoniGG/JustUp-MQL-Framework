@@ -1,9 +1,17 @@
+#define _FRAMEWORK_NAME_ "Just Up Corporation Framework"
+#define _FRAMEWORK_AUTHOR_ "Jonathan Fernandez"
+#define _FRAMEWORK_WEBSITE_ "https://tech.justup.us/framework/"
+#define _FRAMEWORK_EMAIL_ "framework@justup.us"
+#define _FRAMEWORK_VERSION_STRING_ "1.0.0"
+#define _FRAMEWORK_VERSION_NUMBER_ 1.0.0
+#define _FRAMEWORK_VERSION_DATE_ "2022.12.11"
+
 //--- Main Libraries
 #ifdef __MQL4__
-#include "MQL4/init.mqh"
+#include "includerMQL4.mqh"
 #endif
 #ifdef defined __MQL5__
-#include "MQL5/init.mqh"
+#include "includerMQL5.mqh"
 #endif
 
 /*
@@ -12,6 +20,5 @@ USAGE:
 2- Call the FrameworkDeinit() function at the beginning of the Deinit() function.
 3- Call the FrameworkOnTick() function at the beginning of the OnTick() function.
 
-Go to our website to get more information about the Just Up Corporation Framework:
-https://tech.justup.us/framework/
+Go to the repository at https://github.com/justupcorp/JustUp-MQL-Framework to see the full documentation.
 */
