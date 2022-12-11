@@ -1,26 +1,36 @@
 //--- Common Libraries Includer
 #include "../Data/Constant.mqh"
+#include "../Data/Dictionaries.mqh"
+#include "../Data/Enumerators.mqh"
 #include "../Common/DiscordClass.mqh"
 #include "../Common/TelegramClass.mqh"
 #include "../Common/FilesClass.mqh"
+#include "../Common/LogsFileClass.mqh"
+#include "../Common/NewCandleClass.mqh"
+#include "../Common/DateTimeStruc.mqh"
+#include "../Common/ScreenshotClass.mqh"
 
 //--- MQL5 Libraries Includer
 #include "FunctionsPkg.mqh"
+#include "Mql4InMql5.mqh"
 
 //--- Main Functions
 int FrameworkInit()
 {
-    int i = 0;
-    Print("Using the version " + _FRAMEWORK_VERSION_ + " of the Just Up Corporation Framework.");
+    Print("Using the version " + _FRAMEWORK_VERSION_STRING_ + " of the " + _FRAMEWORK_NAME_ + " by " + _FRAMEWORK_AUTHOR_ + ".");
+    Print("Visit our website at " + _FRAMEWORK_WEBSITE_ + ".");
+    Print("Thank you for using our framework!");
+
+    return FRAMEWORK_INITIALIZATION_SUCCEED;
 }
 
 int FrameworkDeinit()
 {
     int i = 0;
-    Print("Just Up Corporation Framework version " + _FRAMEWORK_VERSION_ + " has been unloaded.");
+    Print(_FRAMEWORK_NAME_ + " with version " _FRAMEWORK_VERSION_STRING_ + " has been unloaded.");
 }
 
 int FrameworkOnTick()
 {
-    int i = 0;
+    return FRAMEWORK_UNLOADING_SUCCEED;
 }

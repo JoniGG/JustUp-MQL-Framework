@@ -23,7 +23,11 @@ Collaborator (s):
 - N/A
 
 Other public libraries were included into this framework, all the credits will be listed below:
-- N/A
+- @szagar in GitHub
+    - DateTime Structure Library
+    - Some functions for the FunctionPkg Library
+- @eromawyn in GitHub
+    - Mql4InMql5 Package
 
 ## Colaborate
 If you want to collaborate with the project feel free to contact me at 
@@ -38,11 +42,42 @@ jonathanfernandezoficial@outlook.com
 No current date has been set.
 ### New Libraries to Incorporate
 - Candlestick Patterns class
+- Errors Descriptions from code (metatrader app & server, and internal framework)
 
 ### New Changes in current Libraries
 - No changes in process
 
 ## Changes Log
+### Version 1.02
+1. Constant File improvement
+2. Initialization & Deinitialization of the framework has been improved
+3. Upgrade of the FunctionPkg Library. See the list below:
+    - IsLondonDLS() added. It is a function that return true if we're in the London Daylight Saving time. Supports from 2000 to 2029.
+    - IsNewYorkDLS() added. It is a function that return true if we're in the New York Daylight Saving time. Supports from 2000 to 2029.
+    - GetErrorDescription() added. Return the error description from a given error code.
+    - RGB() added. Make a color from rgb
+    - CompareDoubles() added. Compares 2 doubles with a very good precision.
+    - MathHope() added. Calculates the Mathematical Hope
+
+4. Added the library Screenshot Class: It helps to take a chart screenshot and manage the last screenshot taken
+5. DateTime Structure added. This is an extension of the MqlDateTime structure made by @szagar in GitHub
+6. Added the Enumerators Library. It is a set of enumerators ready to be used. It Includes:
+    - Hour
+    - Day
+    - Month
+    - Weekday
+
+7. Added Dictionaries Library. It is a set of dictionaries ready to be used. It supports the enumerators format. It includes:
+    - HourToString()
+    - DayToString()
+    - MonthToString()
+    - WeekdayToString()
+    - GetCharPos() added. It is a function that returns the position of a given character within the english alphabet.
+    - GetCharFromPos() added. It is a function that returns the character in a given position within the english alphabet.
+    
+8. Mql4InMql5 Package added. This is a package that allows to code with the mql4 style in mql5. Made by @eromawyn in GitHub.
+
+
 ### Version 1.01
 1. The FilesClass library has been modified. The following changes were made:
     - Added the function ReadLine() for reading an specific line instead of the first line only
@@ -65,5 +100,4 @@ No current date has been set.
     - NewCandleClass:  Handles the event of a new candle in multiple timeframes
     - FunctionsPkg: A package will multiple functions. The function added on this version is:
         - CalculateLotSize(): Returns the lot size for an specific position
-
 2. The initial files and some internal constants and settings were generated

@@ -64,7 +64,7 @@ bool CLogsFile::LogsInit()
     m_hFile = GetFileHandle();
 
     FileSeek(m_hFile, 0, SEEK_END);
-    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + "Logs file initialized" + "n"))
+    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + "Logs file initialized"))
     {
         res = true;
     }
@@ -80,7 +80,7 @@ bool CLogsFile::LogsDeinit()
     m_hFile = GetFileHandle();
 
     FileSeek(m_hFile, 0, SEEK_END);
-    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + "Logs file deinitialized" + "n"))
+    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + "Logs file deinitialized"))
     {
         res = true;
     }
