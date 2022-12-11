@@ -30,19 +30,20 @@ Other public libraries were included into this framework, all the credits will b
     - Mql4InMql5 Package
 
 ## Colaborate
-If you want to collaborate with the project feel free to contact me at 
-jonathanfernandezoficial@outlook.com
+If you want to collaborate with the project feel free to contact me at
+framework@justup.us
 
 ## Known Bugs
 No known bugs at this moment. 
 If you have found a bug, or fixed a bug and want to share it and include it to the repository, please, feel free to contact me at
-jonathanfernandezoficial@outlook.com
+framework@justup.us
 
 ## New Update Expected
 No current date has been set.
 ### New Libraries to Incorporate
 - Candlestick Patterns class (2, 3, & 4 candles patterns divided with a class or structure). It will include alerts, and notifications.
 - Position Management Class with hedging, grid, and multi-positions supports
+- Add the timeframe enumerator and dictionay
 
 ### New Changes in current Libraries
 - No changes in process
