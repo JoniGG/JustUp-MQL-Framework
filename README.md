@@ -69,6 +69,7 @@ Below will be explained all the settings variables and what do they do.
 </ul>
 </p>
 
+<<<<<<< HEAD
 #### Libraries List
 <p>The framework has a lot of libraries that can be used in your scripts, indicators and expert advisors. Below will be listed all the libraries.
     All the libraries will have a self readme file with the usage and examples in the `library_readmes` folder.
@@ -87,4 +88,3 @@ Below will be explained all the settings variables and what do they do.
 
 #### License
 <p>The framework is under the MIT License. You can read the license in the LICENSE file.</p>
-
