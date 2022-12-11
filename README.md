@@ -29,6 +29,19 @@ Other public libraries were included into this framework, all the credits will b
 If you want to collaborate with the project feel free to contact me at 
 jonathanfernandezoficial@outlook.com
 
+## Known Bugs
+No known bugs at this moment. 
+If you have found a bug, or fixed a bug and want to share it and include it to the repository, please, feel free to contact me at
+jonathanfernandezoficial@outlook.com
+
+## New Update Expected
+No current date has been set.
+### New Libraries to Incorporate
+- .Set Files reading for real-time EA settings change
+
+### New Changes in current Libraries
+- No changes in process
+
 ## Changes Log
 ### Version 1.00
 1. The following list of libraries were added:
