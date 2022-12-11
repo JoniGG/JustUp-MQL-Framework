@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.mqh": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
