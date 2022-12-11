@@ -7,9 +7,9 @@ USAGE:
 2. Use #include <../JustUp-MQL-Framework/Main.mqh>
 
 If you are using it in an expert advisor...
-3. Call FrameworkInit() in your OnInit() function.
-4. Call FrameworkDeInit() in your OnDeInit() function.
-5. Call FrameworkOnTick() in your OnTick() function.
+1. Call FrameworkInit() in your OnInit() function.
+2. Call FrameworkDeInit() in your OnDeInit() function.
+3. Call FrameworkOnTick() in your OnTick() function.
 
 It is all set-up. You just need to go to the constant files to adjust the "Internal Framework Settings" variables if you want to modify something.
 Please, do not modify any file of the framework except for the setting section if you don't understand completely what are you doing.
