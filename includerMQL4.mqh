@@ -2,6 +2,7 @@
 
 //--- Internal
 #include "internal/libs/workloadMQL4.mqh"
+#include "common/includerCommon.mqh"
 
 //--- Classes
 

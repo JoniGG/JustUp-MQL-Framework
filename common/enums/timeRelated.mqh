@@ -1,4 +1,5 @@
-//--- A set of enumerators ready to use in your scripts
+//--- Time related enumerators. This library is compatible with the timeRelated.mqh dictionary file in the dics folder.
+#define _TIME_RELATED_ENUM_VERSION_ 1.0
 
 //--- Hour Enumerator
 enum Hour

@@ -1,16 +1,6 @@
-//+------------------------------------------------------------------+
-//|                                              mql4compat.mqh v2.2 |
-//|                           https://github.com/eromawyn/mql4compat |
-//|                                     Copyright (c) 2021, Eromawyn |
-//| Original author :                                                |
-//|             Copyright (c) 2013, Arunas Pranckevicius(T-1000), UK |
-//+------------------------------------------------------------------+
-
-// Updated MQL4 compatibility library. Originaly from http://www.mql5.com/en/articles/81
-// The initmql4.mqh  there is incomplete
-//---- Incompatible function groups have extention *MQL4. You need to modify your code for compatibility and add MQL4 to fuctions what give errors.
-// For example, Object functions have new paramneter: the window handler as first parameter in MQL5.
-
+//--- This package allows you to use the MQL4 functions in MQL5.
+//--- Credits to @eromawyn in GitHub
+#define _MQL4INMQL5_PACKAGE_VERSION_ 2.2
 
 //--- declaration of constants
 #define OP_BUY 0           //Buy 

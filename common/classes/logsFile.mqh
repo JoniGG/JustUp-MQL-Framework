@@ -1,4 +1,5 @@
-//--- CLogsFile class will allow to make and edit a log file on a very easy way
+//--- This class is used to work with logs files
+#define _LOGS_FILE_CLASS_VERSION_ 1.0
 
 class CLogsFile
 {

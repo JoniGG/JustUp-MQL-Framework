@@ -1,4 +1,5 @@
-//--- CDiscord Class to send text messages and images to Discord
+//--- This class is used to send messages to Discord
+#define _DISCORD_CLASS_VERSION_ 1.0
 
 class CDiscord
 {

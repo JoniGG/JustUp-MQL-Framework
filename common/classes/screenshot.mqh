@@ -1,4 +1,5 @@
-//--- Will handle the screenshot of the chart
+//--- This class is used to work with chart screenshots
+#define _SCREENSHOT_CLASS_VERSION_ 1.0
 
 class CScreenshot
 {

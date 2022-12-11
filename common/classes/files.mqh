@@ -1,22 +1,16 @@
-//--- CFiles class will allow you to handle files on a very easy way
-
-enum FileType
-  {
-   FILE_TYPE_UNKNOWN=0,
-   FILE_TYPE_TEXT,
-   FILE_TYPE_BINARY,
-    FILE_TYPE_CSV
-  };
+//--- This class is used to work with files
+#include "../enums/fileType.mqh"
+#define _FILES_CLASS_VERSION_ 1.0
 
 class CFiles
   {
     //--- Constructor
-   CFiles(string fileName, string filePath, FileType type, bool inCommonFolder=false)
+   CFiles(string fileName, string filePath, ENUM_FILE_TYPE type, bool inCommonFolder=false)
      {
         m_hFile=INVALID_HANDLE;
         m_fileName=fileName;
         m_filePath=filePath;
-        m_fileType=type;
+        m_ENUM_FILE_TYPE=type;
         m_inCommonFolder=inCommonFolder;
      }
 
@@ -32,7 +26,7 @@ class CFiles
     int GetLineNum(string valueOfLine);
     string GetFileName();
     string GetFilePath();
-    FileType GetFileType();
+    ENUM_FILE_TYPE GetENUM_FILE_TYPE();
     bool IsCommon();
     string GetFileExtension();
     bool MoveFile(string newFileName, string newFilePath, bool inCommonFolder=false);
@@ -41,7 +35,7 @@ class CFiles
 private:
    string m_fileName;
    string m_filePath;
-   FileType m_fileType;
+   ENUM_FILE_TYPE m_ENUM_FILE_TYPE;
    bool m_inCommonFolder;
    int m_hFile;
    int GetFileHandle();
@@ -53,7 +47,7 @@ int CFiles::GetFileHandle()
     string fullPath = m_filePath + m_fileName;
 
     //--- Creates a TXT file
-   if(m_fileType == FILE_TYPE_TEXT)
+   if(m_ENUM_FILE_TYPE == FILE_TYPE_TEXT)
      {
       if(m_inCommonFolder)
         {
@@ -66,7 +60,7 @@ int CFiles::GetFileHandle()
     }
     
     //--- Creates a binary file
-    if(m_fileType == FILE_TYPE_BINARY)
+    if(m_ENUM_FILE_TYPE == FILE_TYPE_BINARY)
       {
        if(m_inCommonFolder)
          {
@@ -79,7 +73,7 @@ int CFiles::GetFileHandle()
       }
       
     //--- Creates a CSV file
-    if(m_fileType == FILE_TYPE_CSV)
+    if(m_ENUM_FILE_TYPE == FILE_TYPE_CSV)
     {
         if(m_inCommonFolder)
           {
@@ -331,9 +325,9 @@ string CFiles::GetFilePath()
 }
 
 //--- Return the file type
-FileType CFiles::GetFileType()
+ENUM_FILE_TYPE CFiles::GetENUM_FILE_TYPE()
 {
-    return m_fileType;
+    return m_ENUM_FILE_TYPE;
 }
 
 //--- Return if it is in the common folder or not
@@ -347,15 +341,15 @@ string CFiles::GetFileExtension()
 {
     string ext = "FILE_TYPE_UNKNOWN";
 
-    if(m_fileType == FILE_TYPE_TEXT)
+    if(m_ENUM_FILE_TYPE == FILE_TYPE_TEXT)
     {
         ext = ".txt";
     }
-    else if(m_fileType == FILE_TYPE_BINARY)
+    else if(m_ENUM_FILE_TYPE == FILE_TYPE_BINARY)
     {
         ext = ".bin";
     }
-    else if (m_fileType == FILE_TYPE_CSV)
+    else if (m_ENUM_FILE_TYPE == FILE_TYPE_CSV)
     {
         ext = ".csv";
     }

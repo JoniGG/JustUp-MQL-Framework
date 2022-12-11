@@ -1,4 +1,5 @@
-//--- CNewCandleClass class that send a signal when a new candle is formed
+//--- This class is used to handle the new candle event
+#define _NEW_CANDLE_CLASS_VERSION_ 1.0
 
 class CNewCandle
 {

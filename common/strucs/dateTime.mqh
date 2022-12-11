@@ -1,4 +1,6 @@
 //--- Date Time Structure is an extension of MqlDateTime structure ---
+//--- Credits to  @szagar in GitHub
+#define _DATE_TIME_STRUCT_VERSION_ 1.0
 
 struct CDateTime : public MqlDateTime
   {

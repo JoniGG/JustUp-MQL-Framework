@@ -34,7 +34,7 @@ All the libraries will have a full wiki and usage examples in the path *librarie
 Below will be listed all the libraries list and a short description of what does them do. <br>
 ### Classes <br>
 Here are the libraries that have multiple methods and which code is based on the class sintax. <br>
-- None
+- CDiscord - Allow sending message to discord.
 
 ### Dictionaries <br>
 Here are the libraries that allow you to get an string value from another value given in other type of variable. <br>

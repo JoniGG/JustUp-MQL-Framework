@@ -1,4 +1,6 @@
-//--- CTelegram class for sending a message to a telegram channel
+//--- This class is used to send messages to Telegram
+#define _TELEGRAM_CLASS_VERSION_ 1.0
+
 #ifdef __MQL4__
 #define UrlDefinedError 4066
 #endif 

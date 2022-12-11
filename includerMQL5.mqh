@@ -2,6 +2,7 @@
 
 //--- Internal
 #include "internal/libs/workloadMQL5.mqh"
+#include "common/includerCommon.mqh"
 
 //--- Classes
 
@@ -16,6 +17,6 @@
 
 
 //--- Packages
-
+#include "common/packages/Mql4InMql5.mqh"
 
 //--- Structures
