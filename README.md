@@ -43,7 +43,7 @@ Below will be explained all the settings variables and what do they do.</p>
 
 #### Folders Structure
 <ul>
-    <li><b>internal<b>: This folder will include all the internal files of the framework. Do not modify anything from here except the settings.mqh file.
+    <li><b>internal</b>: This folder will include all the internal files of the framework. Do not modify anything from here except the settings.mqh file.
         <ul>
             <li><b>data</b>: This folder will contain all the data of the framework, including internal constants</li>
             <li><b>logs</b>: This folder will include all the logs files of the framework, divided by days and sessions
