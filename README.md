@@ -25,7 +25,9 @@ All the libraries will have a full wiki and usage examples in the path *librarie
 *The full wiki in the github repository will be launched soon!*
 
 ### Libraries List
+
 Below will be listed all the libraries list and a short description of what does them do.
+
 **Classes**
 Here are the libraries that have multiple methods and which code is based on the class sintax.
 - 
