@@ -36,7 +36,7 @@ Below will be explained all the settings variables and what do they do.</p>
 <li><b>_ALLOW_ALERTS_</b>: This will allow or not that the framework send error alerts to the metatrader 4/5 terminal when used on an expert advisor</li>
 <li><b>_ALLOW_NOTIFICATIONS_</b>: This will allow or not sending notification to the mobile device if there's an error in the framework when used on an expert advisor</li>
 <li><b>_ALLOW_LOGS_</b>: This will allow or not saving logs in a logs file in the framework folder</li>
-<li><b>_ALLOW_DEBUG_</b>: This will allow or not showing debug messages using the <b>Print()<b> function</li>
+<li><b>_ALLOW_DEBUG_</b>: This will allow or not showing debug messages using the <b>Print()</b> function</li>
 <li><b>_ALLOW_DEBUG_LOGS_</b>: This will allow or not saving debug logs in the logs file in the framework folder</li>
 <li><b>_LANGUAGE_</b>: This will be the language shown in the interface and logs. Currently only does support english</li>
 </ol>
