@@ -27,7 +27,7 @@ If you want to colaborate with the project, feel free to reach us at [framework@
 **Setting up the framework**
 <p>The framework has some settings that you can adjust to your own style and needs.<br>
 This settings are located in the folder *JustUp-MQL-Framework/internal* in a file with the name *settings.mqh*.
-Below will be explained all the settings variables and what do they do.
+Below will be explained all the settings variables and what do they do.</p>
 <ol>
 <li>`_ALLOW_INTERFACE_`: This will load or not the framework interface when loading it on an expert advisor</li>
 <li>`_DEACTIVATE_LOGO_`: This will load the framework logo to the chart when loading it on an expert advisor</li>
@@ -67,24 +67,20 @@ Below will be explained all the settings variables and what do they do.
     <li>changelogs: This folder will include all the changelogs files</li>
     <li>library_readmes: This folder will include all the readme files of the libraries</li>
 </ul>
-</p>
 
-<<<<<<< HEAD
 #### Libraries List
 <p>The framework has a lot of libraries that can be used in your scripts, indicators and expert advisors. Below will be listed all the libraries.
-    All the libraries will have a self readme file with the usage and examples in the `library_readmes` folder.
+    All the libraries will have a self readme file with the usage and examples in the `library_readmes` folder.</p>
 <ol>
     ...
 </ol>
-</p>
 
 #### Credits
 <p>The framework has been made by Jonathan Fernandez, Just Up Corporation CEO. The framework is open-source and can be used by anyone.
-    The framework includes a lot of libraries that have been made by other people. Below will be listed all the credits of the libraries.
+    The framework includes a lot of libraries that have been made by other people. Below will be listed all the credits of the libraries.</p>
 <ol>
     ...
 </ol>
-</p>
 
 #### License
 <p>The framework is under the MIT License. You can read the license in the LICENSE file.</p>
