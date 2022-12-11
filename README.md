@@ -65,10 +65,10 @@ All classes will start with the letter "C". I.e. if I have a class called "Candl
 In the other side, all the structure will start with the letter "S". I.e. if I have an structure called "Price" it'll be coded under the name "SPrice"
 
 *Private Class Variables & Methods*
-These will start with the letter "m" and the character "_" at the beginning, following then the external naming structure.
-I.e.
-The internal class variable of "nameOfDoctor" will be "m_nameOfDoctor"
-The internal class method of "GetSomething()" will be "m_GetSomething"
+These will start with the letter "m" and the character "_" at the beginning, following then the external naming structure. <br>
+I.e. <br>
+The internal class variable of "nameOfDoctor" will be "m_nameOfDoctor" <br>
+The internal class method of "GetSomething()" will be "m_GetSomething" <br>
 
 These applies also to the private structure's variables.
 
