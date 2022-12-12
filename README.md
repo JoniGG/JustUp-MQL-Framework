@@ -34,27 +34,38 @@ All the libraries will have a full wiki and usage examples in the path *librarie
 Below will be listed all the libraries list and a short description of what does them do. <br>
 ### Classes <br>
 Here are the libraries that have multiple methods and which code is based on the class sintax. <br>
-- CDiscord - Allow sending message to discord.
+- CDiscord - Allows sending message to discord.
+- CFiles - Allows handling files very easy.
+- CLogsFile - Allow handling logs files with pre-defined structures.
+- CNewCandle - Allows handling the new candle event
+- CScreenshot - Allows handling the chart screenshot task
+- CTelegram - Allows sending message to a telegram channel.
 
 ### Dictionaries <br>
 Here are the libraries that allow you to get an string value from another value given in other type of variable. <br>
-- None
+- Alphabet - Allows working with the characters position within the english alphabet
+- Error Descriptions - Return the description from a given error code/definition
+- Time Related: Dictionary that works with the library with the same name on the enumerators.
 
 ### Enumerators <br>
 Here are the libraries that contains enumerators. Very useful to use on the *input* or *extern* variable for a better user friendly setup. <br>
-- None
+- Time Related: A library that makes more user-friendly the extern/input variables related to time.
+- File Type: An enumerator with supported time files.
 
 ### Functions <br>
 Here are the functions that are by itself, with no relation to other functions. A function per library.<br>
-- None
+- getLot() - Return the lot size based on a given risk and stop loss distance in pip
 
 ### Packages <br>
 Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax. <br>
-- None
+- Compare Vars: It is a library that have multiple functions for comparing variables & arrays of the same type
+- Daylight Savings: It is a package to manage the day light saving times in New York and London.
+- Statistics: It is a package with multiple statistic math functions inside.
+- Mql4InMql5: It is a package that allow using the same functions in MQL5 as you do in MQL4.
 
 ### Structures <br>
 Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience. <br>
-- None
+- DateTime: It extends the built-in MqlDateTime structures.
 
 ## Understanding Naming <br>
 Here will be a description of how I structured the naming in my code. <br>
@@ -153,8 +164,8 @@ A normal update with a release could mean that the library incorporated has not 
 - No changes in process <br>
 
 ## Changes Log <br>
-### Version 1.0.0 <br>
-*Work in progress...* <br>
+### Version 1.0.2 <br>
+Same libraries but a most structured folders and files <br>
 
 ### Version 0.2.0
 1. Constant File improvement
