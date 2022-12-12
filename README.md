@@ -71,11 +71,21 @@ Libraries that will be added soon!
 ### New Libraries to Incorporate <br>
 - Candlestick Patterns class (2, 3, & 4 candles patterns divided with a class or structure). It will include alerts, and notifications. <br>
 - Position Management Class with hedging, grid, and multi-positions supports <br>
+- Logs on chart <br>
+- The new files libraries to handle the other files types <br>
 
 ### New Changes in current Libraries <br>
 - No changes in process <br>
+- Fix the bugs in the screenshot & new candle libraries <br>
 
 ## Changes Log <br>
+### Version 1.0.3 <br>
+1. Added the library Print Extended. It is a library that allows you to use the function Print() with more options. <br>
+2. The library CFiles has been deleted.
+3. Added the library TextFiles to handle text files. All the bugs related to the old CFiles library were changed. <br>
+However, this library won't be included in the includer commands until the next major update 2.0.0. to avoid conflicts with the first pre-release. <br>
+But, the file is already included in the repository, so you can added manually by uncommenting the line in the includer file in the common folder. <br>
+
 ### Version 1.0.2 <br>
 Same libraries but a most structured folders and files <br>
 

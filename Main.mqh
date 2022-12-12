@@ -22,3 +22,5 @@ USAGE:
 
 Go to the repository at https://github.com/justupcorp/JustUp-MQL-Framework to see the full documentation.
 */
+
+//--- Temporal Files (Do not modify)
