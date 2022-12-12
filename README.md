@@ -8,26 +8,6 @@
 The official Just Up Corporation's framework for Metaquotes Language 4 &amp; 5.
 
 # Wiki
-USAGE:
-1. Download/Clone the repository into your MQL4/5 main folder
-2. Use #include <../JustUp-MQL-Framework/Main.mqh>
-
-If you are using it in an expert advisor...
-1. Call FrameworkInit() in your OnInit() function.
-2. Call FrameworkDeInit() in your OnDeInit() function.
-3. Call FrameworkOnTick() in your OnTick() function.
-4. Call FrameworkOnChart() in your OnChartEvent() function.
-
-If you are using it in a script...
-1. Call FrameworkStart() at the beginning of your OnStart() function.
-2. Call FrameworkStop() at the end of your OnStart() function.
-
-It is all set-up. You just need to adjust the settings of the framework as you want it.
-All the settings are found in the path *internal/settings.mqh*.
-To make a change just adjust the definition value as you like.
-
-All the libraries will have a full wiki and usage examples in the path *libraries_readme/library_name.md*
-
 See the full wiki at [Github](https://www.github.com/justupcorp/JustUp-MQL-Framework/wiki) for getting a deep undertanding of how to use it.
 
 ## Libraries List <br>
