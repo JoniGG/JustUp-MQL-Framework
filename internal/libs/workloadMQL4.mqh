@@ -26,7 +26,7 @@ void FrameworkInit()
 }
 
 //--- Place at the beginning of the Deinit() function.
-void FrameworkDeinit()
+void FrameworkDeInit()
 {
     Print("Deinitializing " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "...");
 
@@ -37,6 +37,14 @@ void FrameworkDeinit()
 
 //--- Place at the beginning of the OnTick() function.
 void FrameworkOnTick()
+{
+
+    //... Your code here
+
+}
+
+//--- Place at the beginning of the OnChartEvent() function.
+void FrameworkOnChart()
 {
 
     //... Your code here

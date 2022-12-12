@@ -1,20 +1,21 @@
 //--- This class is used to work with logs files
-#define _LOGS_FILE_CLASS_VERSION_ 1.0
+#define _LOGS_FILE_CLASS_VERSION_ 1.1
 
 class CLogsFile
 {
+public:
     CLogsFile(string fileName, string filePath, bool inCommonFolder=false)
     {
         m_fileName=fileName;
         m_filePath=filePath;
         m_inCommonFolder=inCommonFolder;
         m_hFile=GetFileHandle();
-        FileWrite(m_hFile, "Log file created at: " + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + "n");
+        FileWrite(m_hFile, "Log file created at: " + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS));
         FileClose(m_hFile);
     }
     bool Add(string title, string message, string location);
     bool LogsInit();
-    bool LogsDeinit();
+    bool LogsDeInit();
 
 private:
     string m_fileName;
@@ -75,7 +76,7 @@ bool CLogsFile::LogsInit()
 }
 
 //--- Deinitializes the logs file
-bool CLogsFile::LogsDeinit()
+bool CLogsFile::LogsDeInit()
 {
     bool res = false;
     m_hFile = GetFileHandle();

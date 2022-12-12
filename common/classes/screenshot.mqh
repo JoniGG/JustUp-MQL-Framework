@@ -3,6 +3,7 @@
 
 class CScreenshot
 {
+public:
     //--- Constructor
     CScreenshot(string name, string path, string mode = "16:9", int resMultiplier = 1, int chartId = 0)
     {
@@ -59,8 +60,8 @@ private:
 //--- Will take a screenshot of the chart
 bool CScreenshot::Take()
 {
-    string screenshotName = m_name + "_" + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + m_ext;
-    string screenshotPath = m_path + screenshotName;
+    string screenshotName = m_name;
+    string screenshotPath = m_path;
     string screenshotFullPath = screenshotPath + screenshotName;
     screenshotFullPath += "_" + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + m_ext;
 

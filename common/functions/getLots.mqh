@@ -1,6 +1,8 @@
 //--- Function that return the lot size for a position based on the risk
 #include "../constants.mqh"
-#include "../packages/Mql4InMql5.mqh"
+#ifdef _MQL5_
+    #include "../packages/Mql4InMql5.mqh"
+#endif
 #define _GET_LOTS_FUNCTION_VERSION_ 1.0
 
 double GetLots(double stopLossPips, double riskPercent, string symbol = SYMBOL)

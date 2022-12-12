@@ -1,10 +1,11 @@
 //--- This class is used to work with files
 #include "../enums/fileType.mqh"
-#define _FILES_CLASS_VERSION_ 1.0
+#define _FILES_CLASS_VERSION_ 1.2
 
 class CFiles
   {
-    //--- Constructor
+public: 
+   //--- Constructor
    CFiles(string fileName, string filePath, ENUM_FILE_TYPE type, bool inCommonFolder=false)
      {
         m_hFile=INVALID_HANDLE;
@@ -14,22 +15,22 @@ class CFiles
         m_inCommonFolder=inCommonFolder;
      }
 
-    bool CreateFile(string initialText="");
-    bool DeleteFile();
+    bool Create(string initialText="");
+    bool Delete();
     bool AddLine(string line);
     bool ReplaceBody(string body);
-    bool ReplaceLine(string line, int lineNum);
+    bool ReplaceLine(int lineNum, string line);
     bool IsEmpty();
     string ReadFirstLine();
     string ReadLine(int lineNum, int offset=0);
     bool DeleteLine(int lineNum);
-    int GetLineNum(string valueOfLine);
+    int GetLinePosition(string valueOfLine);
     string GetFileName();
     string GetFilePath();
     ENUM_FILE_TYPE GetENUM_FILE_TYPE();
     bool IsCommon();
     string GetFileExtension();
-    bool MoveFile(string newFileName, string newFilePath, bool inCommonFolder=false);
+    bool Move(string newFileName, string newFilePath, bool inCommonFolder=false);
 
 
 private:
@@ -51,11 +52,11 @@ int CFiles::GetFileHandle()
      {
       if(m_inCommonFolder)
         {
-         m_hFile = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
+         m_hFile = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON | FILE_SHARE_READ);
         }
     else
         {
-         m_hFile = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
+         m_hFile = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_SHARE_READ);
         }
     }
     
@@ -89,9 +90,9 @@ int CFiles::GetFileHandle()
   }
 
 //--- Creates the file
-bool CFiles::CreateFile(string initialText = "")
+bool CFiles::Create(string initialText = "")
   {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     bool res = false;
    
    if(FileWrite(m_hFile, initialText))
@@ -103,7 +104,7 @@ bool CFiles::CreateFile(string initialText = "")
    return res;
   }
 //--- Deletes the file
-bool CFiles::DeleteFile()
+bool CFiles::Delete()
   {
    string fullPath = m_filePath + m_fileName;
 
@@ -121,7 +122,7 @@ bool CFiles::DeleteFile()
 //--- Adds a line to the file
 bool CFiles::AddLine(string line)
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     bool res = false;
 
     //--- Adds a line to the file
@@ -139,7 +140,7 @@ bool CFiles::AddLine(string line)
 //--- Replaces the body of the file
 bool CFiles::ReplaceBody(string body)
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     bool res = false;
 
     //--- Replaces the body of the file
@@ -157,7 +158,7 @@ bool CFiles::ReplaceBody(string body)
 //--- Checks if the file is empty
 bool CFiles::IsEmpty()
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     bool res = false;
 
     //--- Checks if the file is empty
@@ -174,7 +175,7 @@ bool CFiles::IsEmpty()
 //--- Reads the first line of the file
 string CFiles::ReadFirstLine()
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     string res = "";
 
     //--- Reads the first line of the file
@@ -189,7 +190,7 @@ string CFiles::ReadFirstLine()
 //--- Reads a line of the file
 string CFiles::ReadLine(int lineNum, int offset=0)
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     string res = "";
     int max_i = lineNum + offset;
 
@@ -207,9 +208,9 @@ string CFiles::ReadLine(int lineNum, int offset=0)
 }
 
 //--- Replaces a line of the file
-bool CFiles::ReplaceLine(string line, int lineNum)
+bool CFiles::ReplaceLine(int lineNum, string line)
 {
-    long handle = GetFileHandle();
+     m_hFile = GetFileHandle();
     bool res = false;
     string Body[] = {""};
 
@@ -234,10 +235,10 @@ bool CFiles::ReplaceLine(string line, int lineNum)
 
     FileClose(m_hFile);
 
-    DeleteFile();
-    CreateFile("");
+    Delete();
+    Create("");
 
-    handle = GetFileHandle();
+    m_hFile = GetFileHandle();
 
     for (int o = 0; o < i; o++)
     {
@@ -252,7 +253,7 @@ bool CFiles::ReplaceLine(string line, int lineNum)
 //--- Deletes a line of the file
 bool CFiles::DeleteLine(int lineNum)
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     bool res = false;
     string Body[] = {""};
 
@@ -273,10 +274,10 @@ bool CFiles::DeleteLine(int lineNum)
 
     FileClose(m_hFile);
 
-    DeleteFile();
-    CreateFile("");
+    Delete();
+    Create("");
 
-    handle = GetFileHandle();
+    m_hFile = GetFileHandle();
 
     for (int o = 0; o < i; o++)
     {
@@ -289,9 +290,9 @@ bool CFiles::DeleteLine(int lineNum)
 }
 
 //--- Return the line number of an specific string
-int CFiles::GetLineNum(string valueOfLine)
+int CFiles::GetLinePosition(string valueOfLine)
 {
-    long handle = GetFileHandle();
+    m_hFile = GetFileHandle();
     int res = 0;
 
     //--- Return the line number of an specific string
@@ -358,7 +359,7 @@ string CFiles::GetFileExtension()
 }
 
 //--- Move the file to another folder
-bool CFiles::MoveFile(string newFileName, string newFilePath, bool inCommonFolder=false)
+bool CFiles::Move(string newFileName, string newFilePath, bool inCommonFolder=false)
 {
     bool res = false;
 

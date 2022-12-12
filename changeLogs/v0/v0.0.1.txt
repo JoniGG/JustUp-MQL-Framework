@@ -1,0 +1,10 @@
+### Version 0.0.1
+1. The following list of libraries were added:
+    - DiscordClass: Helps sending messages and chart screenshot to a discord channel
+    - TelegramClass: Helps sending message and files to a Telegram Channel
+    - FilesClass: Helps handling all the tasks with a file
+    - LogsFileClass: Helps logging some logs into a file with a predefined format
+    - NewCandleClass:  Handles the event of a new candle in multiple timeframes
+    - FunctionsPkg: A package will multiple functions. The function added on this version is:
+        - CalculateLotSize(): Returns the lot size for an specific position
+2. The initial files and some internal constants and settings were generated
