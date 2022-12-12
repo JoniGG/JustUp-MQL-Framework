@@ -28,7 +28,7 @@ To make a change just adjust the definition value as you like.
 
 All the libraries will have a full wiki and usage examples in the path *libraries_readme/library_name.md*
 
-*The full wiki in the github repository will be launched soon!*
+See the full wiki at [Github](https://www.github.com/justupcorp/JustUp-MQL-Framework/wiki) for getting a deep undertanding of how to use it.
 
 ## Libraries List <br>
 Below will be listed all the libraries list and a short description of what does them do. <br>
@@ -67,66 +67,14 @@ Here are the libraries that contains function packages. Are functions that have 
 Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience. <br>
 - DateTime: It extends the built-in MqlDateTime structures.
 
-## Understanding Naming <br>
-Here will be a description of how I structured the naming in my code. <br>
-
-### Classes & Structures <br>
-
-All classes will start with the letter "C". I.e. if I have a class called "Candles", it will be coded under the name "CCandles". <br>
-In the other side, all the structure will start with the letter "S". I.e. if I have an structure called "Price" it'll be coded under the name "SPrice" <br>
-
-*Private Class Variables & Methods* <br>
-These will start with the letter "m" and the character "_" at the beginning, following then the external naming structure. <br>
-I.e. <br>
-The internal class variable of "nameOfDoctor" will be "m_nameOfDoctor" <br>
-The internal class method of "GetSomething()" will be "m_GetSomething" <br>
-
-These applies also to the private structure's variables. <br>
-
-### Dictionaries & Functions <br>
-These will be camel cased, so the first letter of each word of the name will be capitalized. <br>
-I.e. If I have a function with name "Get My Name", it will be coded under the name "GetMyName()" <br>
-The same applies to dictionaries due that are functions but with the intention of return a string variable as result of a conversion. <br>
-
-### Enumerators <br>
-These will start with the word "ENUM", then a "_", and followed by the name capitalized. Every new word will be divided by "_". <br>
-I.e. If I have an enumerator with the name "Days of the Month", it will be coded under the name "ENUM_DAYS_OF_MONTH". <br>
-
-### Variables & Definitions <br>
-All the variables will start with a lower-case letter and every new word will start with a capitalized letter. <br>
-I.e. I will name a variable called "My Trades Logs" with the name "myTradesLogs". <br>
-
-In the other side, all the definitions will be named with all the letters capitalized and divided by "_". <br>
-I.e. On a definition called "My Definition" I will use MY_DEFINITION. <br>
-
-The constants will have the initial letter "c" for be different to the regular variable that you can modify. <br>
-I.e. The constant variable with name "pi" will be declared as "cPi". <br>
-
-### Internal Structure <br>
-The Internal Structure will be different in order to avoid you to use an internal made function or variable in an external mode. <br>
-Also these will be private & protected, so you won't be able to call them by accident. <br>
-It will have the characters "i_" using the same naming structure, except for the internal definition which will start and end with the character "_". <br>
-I.e. <br>
-*Internal Version*          |   *External Version* <br>
-_FRAMEWORK_NAME_            |   FRAMEWORK_INIT_SUCCEED <br>
-i_myVariable                |   myVariable <br>
-i_MyFunction()              |   MyFunction() <br>
-i_CMyClass                  |   CMyClass <br>
-i_SMyStructure              |   SMyStructure <br>
-i_ENUM_MY_ENUMERATOR        |   ENUM_MY_ENUMERATOR <br>
-i_MyDictionary()            |   MyDictionary() <br>
-
 ## Credits <br>
 Main Programmer - Jonathan Fernandez, CEO <br>
 Collaborator (s): <br>
 - N/A
 
 Other public libraries were included into this framework, all the credits will be listed below: <br>
-- @szagar in GitHub <br>
-    - DateTime Structure Library
-    - Some functions for the FunctionPkg Library
-- @eromawyn in GitHub <br>
-    - Mql4InMql5 Package
+- @szagar in [GitHub](https://github.com/szagar) <br>
+- @eromawyn in [GitHub](https://github.com/eromawyn) <br>
 
 ## Colaborate <br>
 If you want to collaborate with the project feel free to contact me at  <br>
@@ -137,24 +85,8 @@ All the files pushed to that branch will be reviewed, origanized, and pushed to 
 
 So I do recommend to pull from the *main branch* and push to the *open brach*. <br>
 
-## Known Bugs <br>
-No known bugs at this moment. <br>
-If you have found a bug, or fixed a bug and want to share it and include it to the repository, please, feel free to contact me at <br>
-framework@justup.us or just open an issue at GitHub. <br>
-
-## New Updates Expected <br>
-No current date has been set. <br>
-
-### Working with Versions & Releases <br>
-The version will be structured by x.y.z. <br>
-- An increment in "z" is just a patch for a bug that maybe can modify how the framework work but do not include any new feature or library. Just a bug fix. This version will be compatible with the prior versions with the same "x.y" number. <br>
-- An increment of "y" will be a new update which can include or not patch for any bugs, but will include new features and/or libraries. These are compatible with prior "x" versions. <br>
-- An increment of "x" will be a new major update which include new features, libraries, patchs, and code structure. This version are not compatible with any prior "x.y.z" version number. <br>
-
-The releases will be made only on a minor & major update (x & y). Only will be made if the repository in that specific version has been tested and it is a stable version. <br>
-However, this does not guarantee that will not be any bug. All the known bugs at the release will be listed at the end of the document, and can be any unknown bug to be fixed on next "y" or "z" updates. <br>
-
-A normal update with a release could mean that the library incorporated has not been tested yet, or not deeply tested and can have fatal errors on it. <br>
+## Coding in progress
+Libraries that will be added soon!
 
 ### New Libraries to Incorporate <br>
 - Candlestick Patterns class (2, 3, & 4 candles patterns divided with a class or structure). It will include alerts, and notifications. <br>
