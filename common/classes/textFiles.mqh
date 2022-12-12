@@ -1,7 +1,7 @@
 //--- This class is used to work with files
 #define _TEXT_FILES_CLASS_VERSION_ 1.0
 
-#include "../common/packages/printExtended.mqh"
+#include "../packages/printExtended.mqh"
 
 class CTextFiles
 {
