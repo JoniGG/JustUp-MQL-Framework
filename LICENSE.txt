@@ -1,0 +1,8 @@
+//--- FRAMEWORK LICENSE ---
+JustUp-MQL-FRAMEWORK is an open-source framework, so you can use it, modify it, redistribute it, sell it, or re-create it.
+However, please make sure to add the original web address as credit on your ReadMe file. The line below is required:
+
+Original Author: https://www.github.com/justupcorp/JustUp-MQL-Framework/
+
+----------------------------------------------------------------------------------------------------------------------------
+Feel free to share any modification or addition with us to incorporate it in the original framework to others.
