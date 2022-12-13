@@ -1,35 +1,35 @@
-//--- This class is used to handle the new candle event
-#define _NEW_CANDLE_CLASS_VERSION_ 1.0
+//--- New Candle Event Handler
+#define _NEW_CANDLE_EVENT_CLASS_VERSION_ 2.0
 
-class CNewCandle
+class CNewCandleEvent
 {
 public:
-        CNewCandle(ENUM_TIMEFRAMES timeframe, string symbol = "CHART")
-        {
+         CNewCandleEvent(ENUM_TIMEFRAMES timeframe)
+         {
             m_timeframe = timeframe;
-            m_symbol = symbol;
             m_lastCandleTime = 0;
-        }
+         }
+        
         bool NewCandleEvent();
 private:
         ENUM_TIMEFRAMES m_timeframe;
-        string m_symbol;
         datetime m_lastCandleTime;
 };
 
-bool CNewCandle::NewCandleEvent()
+//--- New Candle Event Handler
+bool CNewCandleEvent::NewCandleEvent()
 {
-    if(m_lastCandleTime != iTime(m_symbol, m_timeframe, 0))
+    if(m_lastCandleTime != iTime(NULL, m_timeframe, 0))
     {
         //--- On initialization will not send a signal
         if(m_lastCandleTime != 0)
         {
-            m_lastCandleTime = iTime(m_symbol, m_timeframe, 0);
+            m_lastCandleTime = iTime(NULL, m_timeframe, 0);
             return(true);
         }
         else
         {
-            m_lastCandleTime = iTime(m_symbol, m_timeframe, 0);
+            m_lastCandleTime = iTime(NULL, m_timeframe, 0);
             return(false);
         }
     }

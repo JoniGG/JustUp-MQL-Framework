@@ -7,7 +7,7 @@ This class will allow you to detect a new candle in multiple timeframes and asse
 ## Usage
 1. Declare an instance of the class using:
 ```cpp
-CNewCandle newCandle(PERIOD_M1);
+CNewCandleEvent newCandle(PERIOD_M1);
 ```
 2. Use the class method on an if cycle to detect a new candle:
 ```cpp
@@ -29,7 +29,7 @@ This code will detect a new candle in the M1 timeframe and send an alert.
 #include <../JustUp-MQL-Framework/Main.mqh>
 
 //Variables & Definitions
-CNewCandle newCandle(PERIOD_M1);
+CNewCandleEvent newCandle(PERIOD_M1);
 
 int OnInit()
 {

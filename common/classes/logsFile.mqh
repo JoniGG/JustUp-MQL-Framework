@@ -1,92 +1,123 @@
 //--- This class is used to work with logs files
-#define _LOGS_FILE_CLASS_VERSION_ 1.1
+#include "../constants.mqh"
+
+#ifdef __MQL4__
+#include "../dics/errorDescriptionMQL4.mqh"
+#endif
+
+#ifdef __MQL5__
+#include "../dics/errorDescriptionMQL5.mqh"
+#endif
+#define _LOGS_FILE_CLASS_VERSION_ 2.0
+
+enum ENUM_LOG_MODE
+{
+    MODE_LOG = 0,
+    MODE_ERROR = 1,
+    MODE_WARN = 2,
+    MODE_INFO = 3,
+    MODE_DEBUG = 4
+};
 
 class CLogsFile
 {
 public:
-    CLogsFile(string fileName, string filePath, bool inCommonFolder=false)
+
+    CLogsFile(string name = "Logs", string path = NULL, bool inCommon = false)
     {
-        m_fileName=fileName;
-        m_filePath=filePath;
-        m_inCommonFolder=inCommonFolder;
-        m_hFile=GetFileHandle();
-        FileWrite(m_hFile, "Log file created at: " + TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS));
-        FileClose(m_hFile);
+        m_name = name + ".txt";
+        m_path = path;
+        m_inCommon = inCommon;
     }
-    bool Add(string title, string message, string location);
-    bool LogsInit();
-    bool LogsDeInit();
+    void Add(int errorCode = 0, string description = NULL, ENUM_LOG_MODE logMode = MODE_LOG);
+    void Initialize();
+    void Deinitialize();
 
 private:
-    string m_fileName;
-    string m_filePath;
-    bool m_inCommonFolder;
-    int m_hFile;
-    int GetFileHandle();
+
+    string m_name;
+    string m_path;
+    bool m_inCommon;
 };
 
-//--- Returns the file handle
-int CLogsFile::GetFileHandle()
-{
-    string fullPath = m_filePath + m_fileName;
+//--- This function will add a new line to the logs file
+void CLogsFile::Add(int errorCode = 0, string description = NULL, ENUM_LOG_MODE logMode = MODE_LOG)
+{   
+    int fileHandle = INVALID_HANDLE;
+    string mode = "LOG  ";
+    bool firstTime = false;
 
-    //--- Creates/Opens a TXT file
-    if(m_inCommonFolder)
+    if(!FileIsExist(m_path + m_name))
+        firstTime = true;
+
+    if(logMode == MODE_ERROR)
+        mode = "ERROR";
+    else if(logMode == MODE_WARN)
+        mode = "WARN ";
+    else if(logMode == MODE_INFO)
+        mode = "INFO ";
+    else if(logMode == MODE_DEBUG)
+        mode = "DEBUG";
+
+    if(m_inCommon)
     {
-        m_hFile = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
+        fileHandle =  FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
     }
     else
     {
-        m_hFile = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
+        fileHandle = FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT);
     }
 
-    return m_hFile;
+    if(description == NULL)
+        description = GetErrorDescription(errorCode);
+    
+    if(!firstTime)
+    {
+        FileSeek(fileHandle,0,SEEK_END);
+        FileWrite(fileHandle,(TimeToString(TimeCurrent()) + " | " + mode +  " | Error code = " + errorCode + " | Description = " + description));
+    }
+    else
+    {
+        FileWrite(fileHandle,TimeToString(TimeCurrent()) + " | " + "INFO-" +  " | The Logs Files has been created.");
+    }
+    
+    FileClose(fileHandle);
 }
 
-//--- Adds a log to the file
-bool CLogsFile::Add(string title, string message, string location)
+//--- This function will initialize the logs file
+void CLogsFile::Initialize()
 {
-    bool res = false;
-    m_hFile = GetFileHandle();
+    int fileHandle = INVALID_HANDLE;
 
-    FileSeek(m_hFile, 0, SEEK_END);
-    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + title + " | " + message + " | " + location + "n"))
+    if(m_inCommon)
     {
-        res = true;
+        fileHandle =  FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
+    }
+    else
+    {
+        fileHandle = FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT);
     }
 
-    FileClose(m_hFile);
-    return res;
+    FileSeek(fileHandle,0,SEEK_END);
+    FileWrite(fileHandle,(TimeToString(TimeCurrent()) + " | " + "INIT " +  " | The Logs Files has been initialized------------------------------------------------------------"));
+    FileClose(fileHandle);
 }
 
-//--- Initializes the logs file
-bool CLogsFile::LogsInit()
+//--- This function will deinitialize the logs file
+void CLogsFile::Deinitialize()
 {
-    bool res = false;
-    m_hFile = GetFileHandle();
+    int fileHandle = INVALID_HANDLE;
 
-    FileSeek(m_hFile, 0, SEEK_END);
-    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + "Logs file initialized"))
+    if(m_inCommon)
     {
-        res = true;
+        fileHandle =  FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
+    }
+    else
+    {
+        fileHandle = FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT);
     }
 
-    FileClose(m_hFile);
-    return res;
-}
-
-//--- Deinitializes the logs file
-bool CLogsFile::LogsDeInit()
-{
-    bool res = false;
-    m_hFile = GetFileHandle();
-
-    FileSeek(m_hFile, 0, SEEK_END);
-    if(FileWrite(m_hFile, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS) + " | " + "Logs file deinitialized"))
-    {
-        res = true;
-    }
-
-    FileClose(m_hFile);
-    return res;
+    FileSeek(fileHandle,0,SEEK_END);
+    FileWrite(fileHandle,(TimeToString(TimeCurrent()) + " | " + "DEINIT" +  "| The Logs Files has been deinitialized----------------------------------------------------------\n"));
+    FileClose(fileHandle);
 }

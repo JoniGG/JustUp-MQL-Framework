@@ -9,6 +9,14 @@
 #define SUCCESS 0
 #define TRUE 1
 #define FALSE 0
+#define DEFAULT 0
+#define INVALID_VALUE -1
+#define INVALID_TIME -1
+#define LOG = "LOGS"
+#define ERRORS = "ERROR"
+#define WARNING = "WARNING"
+#define INFO = "INFO"
+#define DEBUG = "DEBUG"
 
 //----------------------------------------------------------------------------
 //--- Constants

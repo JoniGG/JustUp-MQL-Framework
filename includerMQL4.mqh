@@ -4,19 +4,5 @@
 #include "internal/libs/workloadMQL4.mqh"
 #include "common/includerCommon.mqh"
 
-//--- Classes
-
-
-//--- Dictionaries
-
-
-//--- Enums
-
-
-//--- Functions
-
-
-//--- Packages
-
-
-//--- Structures
+//--- External
+#include "common/functions/autoTradingMQL4.mqh"

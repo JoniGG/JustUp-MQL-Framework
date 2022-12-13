@@ -24,3 +24,4 @@ Go to the repository at https://github.com/justupcorp/JustUp-MQL-Framework to se
 */
 
 //--- Temporal Files (Do not modify)
+#include "temp/temp.mqh"

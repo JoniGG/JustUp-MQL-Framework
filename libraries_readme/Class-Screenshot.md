@@ -8,12 +8,13 @@ Handler for screenshots.
 ## Usage
 1. Declare an instance of the class using:
 ```cpp
-CScreenshot screenshot("Name", "Path", "String mode", multiplierOfResolution, chartID = 0)
+CScreenshot screenshot(ChartID, "Name", "Path/", "String mode", multiplierOfResolution); //All are in default so you can skip them.
 ```
 The modes are:
     - "21:9"
     - "16:9"
     - "4:3"
+
 2. Take a screenshot using:
 ```cpp
 screenshot.Take();
@@ -33,7 +34,7 @@ screenshot.GetLastScreenshotPath();
 
 ## Code Example
 _What does this code do?_
-This code will take a chart screenshot, print the full path of the screenshot taken and delete the screenshot taken after 10 seconds.
+This code will take 2 screenshots and print the last one's full path.
 
 **Requirement Setup**
 1. None
@@ -43,13 +44,15 @@ This code will take a chart screenshot, print the full path of the screenshot ta
 #include <../JustUp-MQL-Framework/Main.mqh>
 
 //Variables & Definitions
-CScreenshot screenshot("Screenshot", "MyScreenshots/", "16:9", 1);
+CScreenshot ss;
 
 int OnInit()
 {
     FrameworkInit();
     //---
-    screenshot.Take();
+    ss.Take();
+    ss.Take();
+    Print(ss.GetLastScreenshotFullPath());
     return INIT_SUCCEEDED;
 }
 
@@ -57,9 +60,6 @@ void OnTick()
 {
     FrameworkOnTick();
     //---
-    Print(screenshot.GetLastScreenshotFullPath());
-    Sleep(10000);
-    screenshot.DeleteLast();
 }
 
 void OnDeinit(const int reason)

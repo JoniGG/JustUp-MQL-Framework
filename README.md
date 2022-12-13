@@ -4,37 +4,40 @@
     </a></p>
 
 
-# JustUp-MQL-Framework
+# JustUp-MQL-Framework v2
 The official Just Up Corporation's framework for Metaquotes Language 4 &amp; 5.
 
 # Wiki
-See the full wiki at [Github](https://www.github.com/justupcorp/JustUp-MQL-Framework/wiki) for getting a deep undertanding of how to use it.
+_It will be made soon!_
 
 ## Libraries List <br>
 Below will be listed all the libraries list and a short description of what does them do. <br>
 ### Classes <br>
 Here are the libraries that have multiple methods and which code is based on the class sintax. <br>
 - CDiscord - Allows sending message to discord.
-- CFiles - Allows handling files very easy.
 - CLogsFile - Allow handling logs files with pre-defined structures.
 - CNewCandle - Allows handling the new candle event
 - CScreenshot - Allows handling the chart screenshot task
 - CTelegram - Allows sending message to a telegram channel.
+- CTextFiles - Allows handling text files.
 
 ### Dictionaries <br>
 Here are the libraries that allow you to get an string value from another value given in other type of variable. <br>
 - Alphabet - Allows working with the characters position within the english alphabet
 - Error Descriptions - Return the description from a given error code/definition
 - Time Related: Dictionary that works with the library with the same name on the enumerators.
+- Prop Firms: Dictionary that have all the prop firms servers.
+- KeyboardKeys: Dictionary that allow you to know what keyboard key was pressed from the lparam of the OnChartEvent() function.
 
 ### Enumerators <br>
 Here are the libraries that contains enumerators. Very useful to use on the *input* or *extern* variable for a better user friendly setup. <br>
 - Time Related: A library that makes more user-friendly the extern/input variables related to time.
-- File Type: An enumerator with supported time files.
 
 ### Functions <br>
 Here are the functions that are by itself, with no relation to other functions. A function per library.<br>
-- getLot() - Return the lot size based on a given risk and stop loss distance in pip
+- GetLots() - Return the lot size based on a given risk and stop loss distance in pip
+- LoginToAccount() - Login to a given account automatically.
+- SetAutoTrading() - Set the auto trading mode on or off.
 
 ### Packages <br>
 Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax. <br>
@@ -42,6 +45,8 @@ Here are the libraries that contains function packages. Are functions that have 
 - Daylight Savings: It is a package to manage the day light saving times in New York and London.
 - Statistics: It is a package with multiple statistic math functions inside.
 - Mql4InMql5: It is a package that allow using the same functions in MQL5 as you do in MQL4.
+- Free Trial: A package that help you managing free trials on your products.
+- Trade Copier Local: A package to copy trades from an account to other in the same computer.
 
 ### Structures <br>
 Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience. <br>
@@ -76,9 +81,19 @@ Libraries that will be added soon!
 
 ### New Changes in current Libraries <br>
 - No changes in process <br>
-- Fix the bugs in the screenshot & new candle libraries <br>
 
 ## Changes Log <br>
+### Version 2.0.0 <br>
+All the libraries from this version are not compatible with the previous versions. <br>
+1. Fixed all the bugs from the previews versions. <br>
+2. Included the library CTextFiles. It is a library that allows you to handle text files. <br>
+3. Added the package FreeTrial. It is a package that allows you to manage the free trial of your product. <br>
+4. Added a prop firm servers list into an array. <br>
+5. Added the dictionary KeyBoardKeys: This will help you to identify the key pressed on the keyboard. <br>
+6. Added the function accountAuth(): This function will login an account automatically. <br>
+7. Added autoTrading function. This will toggle the metatrader auto trading. <br>
+8. Added the tradeCopierLocal package v1.0. This package will allow you to copy trades from one account to another in the same computer. <br>
+
 ### Version 1.0.3 <br>
 1. Added the library Print Extended. It is a library that allows you to use the function Print() with more options. <br>
 2. The library CFiles has been deleted.
