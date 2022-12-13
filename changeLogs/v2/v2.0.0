@@ -1,0 +1,9 @@
+All the libraries from this version are not compatible with the previous versions. <br>
+1. Fixed all the bugs from the previews versions. <br>
+2. Included the library CTextFiles. It is a library that allows you to handle text files. <br>
+3. Added the package FreeTrial. It is a package that allows you to manage the free trial of your product. <br>
+4. Added a prop firm servers list into an array. <br>
+5. Added the dictionary KeyBoardKeys: This will help you to identify the key pressed on the keyboard. <br>
+6. Added the function accountAuth(): This function will login an account automatically. <br>
+7. Added autoTrading function. This will toggle the metatrader auto trading. <br>
+8. Added the tradeCopierLocal package v1.0. This package will allow you to copy trades from one account to another in the same computer. <br>

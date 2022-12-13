@@ -36,7 +36,7 @@ void FrameworkDeInit()
 }
 
 //--- Place at the beginning of the OnTick() function.
-void FrameworkOnTick()
+void FrameworkRun()
 {
 
     //... Your code here

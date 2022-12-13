@@ -6,56 +6,16 @@
 
 # JustUp-MQL-Framework v2
 The official Just Up Corporation's framework for Metaquotes Language 4 &amp; 5.
+IT IS OPEN SOURCE! Feel free to use it and modify it as you want.
 
 # Wiki
-_It will be made soon!_
-
-## Libraries List <br>
-Below will be listed all the libraries list and a short description of what does them do. <br>
-### Classes <br>
-Here are the libraries that have multiple methods and which code is based on the class sintax. <br>
-- CDiscord - Allows sending message to discord.
-- CLogsFile - Allow handling logs files with pre-defined structures.
-- CNewCandle - Allows handling the new candle event
-- CScreenshot - Allows handling the chart screenshot task
-- CTelegram - Allows sending message to a telegram channel.
-- CTextFiles - Allows handling text files.
-
-### Dictionaries <br>
-Here are the libraries that allow you to get an string value from another value given in other type of variable. <br>
-- Alphabet - Allows working with the characters position within the english alphabet
-- Error Descriptions - Return the description from a given error code/definition
-- Time Related: Dictionary that works with the library with the same name on the enumerators.
-- Prop Firms: Dictionary that have all the prop firms servers.
-- KeyboardKeys: Dictionary that allow you to know what keyboard key was pressed from the lparam of the OnChartEvent() function.
-
-### Enumerators <br>
-Here are the libraries that contains enumerators. Very useful to use on the *input* or *extern* variable for a better user friendly setup. <br>
-- Time Related: A library that makes more user-friendly the extern/input variables related to time.
-
-### Functions <br>
-Here are the functions that are by itself, with no relation to other functions. A function per library.<br>
-- GetLots() - Return the lot size based on a given risk and stop loss distance in pip
-- LoginToAccount() - Login to a given account automatically.
-- SetAutoTrading() - Set the auto trading mode on or off.
-
-### Packages <br>
-Here are the libraries that contains function packages. Are functions that have a relation between them but without a class syntax. <br>
-- Compare Vars: It is a library that have multiple functions for comparing variables & arrays of the same type
-- Daylight Savings: It is a package to manage the day light saving times in New York and London.
-- Statistics: It is a package with multiple statistic math functions inside.
-- Mql4InMql5: It is a package that allow using the same functions in MQL5 as you do in MQL4.
-- Free Trial: A package that help you managing free trials on your products.
-- Trade Copier Local: A package to copy trades from an account to other in the same computer.
-
-### Structures <br>
-Here are the libraries that contain structures. In this framework we will be using structure where there's not methods in it, just variables. If there's a method, excluding the constructor & destructor, then we will make it a class for a better coding experience. <br>
-- DateTime: It extends the built-in MqlDateTime structures.
+Check the wiki by clicking [here](https://www.notion.so/just-up/Just-Up-MQL-Framework-5aceaad2812c4e6a94751f92fb9c9c54)
+The wiki is still under construction, so it is not complete yet, but we're adding more and more content every day.
 
 ## Credits <br>
 Main Programmer - Jonathan Fernandez, CEO <br>
 Collaborator (s): <br>
-- N/A
+_No collaborators yet._ <br>
 
 Other public libraries were included into this framework, all the credits will be listed below: <br>
 - @szagar in [GitHub](https://github.com/szagar) <br>
@@ -70,20 +30,7 @@ All the files pushed to that branch will be reviewed, origanized, and pushed to 
 
 So I do recommend to pull from the *main branch* and push to the *open brach*. <br>
 
-## Coding in progress
-Libraries that will be added soon!
-
-### New Libraries to Incorporate <br>
-- Candlestick Patterns class (2, 3, & 4 candles patterns divided with a class or structure). It will include alerts, and notifications. <br>
-- Position Management Class with hedging, grid, and multi-positions supports <br>
-- Logs on chart <br>
-- The new files libraries to handle the other files types <br>
-
-### New Changes in current Libraries <br>
-- No changes in process <br>
-
-## Changes Log <br>
-### Version 2.0.0 <br>
+## Last Update 2.0.0 | Changelog <br>
 All the libraries from this version are not compatible with the previous versions. <br>
 1. Fixed all the bugs from the previews versions. <br>
 2. Included the library CTextFiles. It is a library that allows you to handle text files. <br>
@@ -94,66 +41,8 @@ All the libraries from this version are not compatible with the previous version
 7. Added autoTrading function. This will toggle the metatrader auto trading. <br>
 8. Added the tradeCopierLocal package v1.0. This package will allow you to copy trades from one account to another in the same computer. <br>
 
-### Version 1.0.3 <br>
-1. Added the library Print Extended. It is a library that allows you to use the function Print() with more options. <br>
-2. The library CFiles has been deleted.
-3. Added the library TextFiles to handle text files. All the bugs related to the old CFiles library were changed. <br>
-However, this library won't be included in the includer commands until the next major update 2.0.0. to avoid conflicts with the first pre-release. <br>
-But, the file is already included in the repository, so you can added manually by uncommenting the line in the includer file in the common folder. <br>
 
-### Version 1.0.2 <br>
-Same libraries but a most structured folders and files <br>
+## Libraries List
+The full libraries list and their description can be found on the wiki or by clicking [here](https://just-up.notion.site/Libraries-List-708dd230413a483b8bff0cfec386546e)
 
-### Version 0.2.0
-1. Constant File improvement
-2. Initialization & Deinitialization of the framework has been improved
-3. Upgrade of the FunctionPkg Library. See the list below:
-    - IsLondonDLS() added. It is a function that return true if we're in the London Daylight Saving time. Supports from 2000 to 2029.
-    - IsNewYorkDLS() added. It is a function that return true if we're in the New York Daylight Saving time. Supports from 2000 to 2029.
-    - GetErrorDescription() added. Return the error description from a given error code.
-    - RGB() added. Make a color from rgb
-    - CompareDoubles() added. Compares 2 doubles with a very good precision.
-    - MathHope() added. Calculates the Mathematical Hope
-
-4. Added the library Screenshot Class: It helps to take a chart screenshot and manage the last screenshot taken
-5. DateTime Structure added. This is an extension of the MqlDateTime structure made by @szagar in GitHub
-6. Added the Enumerators Library. It is a set of enumerators ready to be used. It Includes:
-    - Hour
-    - Day
-    - Month
-    - Weekday
-
-7. Added Dictionaries Library. It is a set of dictionaries ready to be used. It supports the enumerators format. It includes:
-    - HourToString()
-    - DayToString()
-    - MonthToString()
-    - WeekdayToString()
-    - GetCharPos() added. It is a function that returns the position of a given character within the english alphabet.
-    - GetCharFromPos() added. It is a function that returns the character in a given position within the english alphabet.
-
-8. Mql4InMql5 Package added. This is a package that allows to code with the mql4 style in mql5. Made by @eromawyn in GitHub.
-
-
-### Version 0.1.0
-1. The FilesClass library has been modified. The following changes were made:
-    - Added the function ReadLine() for reading an specific line instead of the first line only
-    - Added the function ReplaceLine() for replacing an specific line with a new argument
-    - Added the function DeleteLine() for deleting a single line content
-    - Added the function GetLineNum() for returning the line number where is an specific value
-    - Added the function GetFileName() for returning the file name (i.e MyFile.txt)
-    - Added the function GetFilePath() for returning the file path
-    - Added the function GetFileType() for returning the file type in the enum format
-    - Added the function IsCommon() for returning true or false if is in the common folder or not
-    - Added the function GetFileExtension() for returning the file extension in the string format
-    - Added the function MoveFile() for moving the file to another folder
-
-### Version 0.0.1
-1. The following list of libraries were added:
-    - DiscordClass: Helps sending messages and chart screenshot to a discord channel
-    - TelegramClass: Helps sending message and files to a Telegram Channel
-    - FilesClass: Helps handling all the tasks with a file
-    - LogsFileClass: Helps logging some logs into a file with a predefined format
-    - NewCandleClass:  Handles the event of a new candle in multiple timeframes
-    - FunctionsPkg: A package will multiple functions. The function added on this version is:
-        - CalculateLotSize(): Returns the lot size for an specific position
-2. The initial files and some internal constants and settings were generated
+_Thanks for using it!_
