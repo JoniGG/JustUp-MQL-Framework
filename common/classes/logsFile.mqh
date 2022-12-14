@@ -74,7 +74,7 @@ void CLogsFile::Add(int errorCode = 0, string description = NULL, ENUM_LOG_MODE 
     if(!firstTime)
     {
         FileSeek(fileHandle,0,SEEK_END);
-        FileWrite(fileHandle,(TimeToString(TimeCurrent()) + " | " + mode +  " | Error code = " + errorCode + " | Description = " + description));
+        FileWrite(fileHandle,(TimeToString(TimeCurrent()) + " | " + mode +  " | Error code = " + IntegerToString(errorCode) + " | Description = " + description));
     }
     else
     {

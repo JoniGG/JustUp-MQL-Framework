@@ -10,7 +10,6 @@
 #include "classes/newCandle.mqh"
 #include "classes/screenShot.mqh"
 #include "classes/textFiles.mqh"
-#include "classes/localTradeCopy.mqh"
 
 //--- Dictionaries
 #include "dics/timeRelated.mqh"
@@ -22,8 +21,6 @@
 #include "enums/timeRelated.mqh"
 
 //--- Functions
-#include "functions/getLots.mqh"
-#include "functions/accountAuth.mqh"
 
 //--- Packages
 #include "packages/compareVars.mqh"

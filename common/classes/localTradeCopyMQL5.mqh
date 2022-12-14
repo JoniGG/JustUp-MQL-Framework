@@ -90,14 +90,14 @@ bool LocalTradeCopy::SendSignal()
     if(signal.CountLines() > 1)
         return false;
 
-    signal.AddText(Set.signalMode);
+    signal.AddText(IntegerToString(Set.signalMode));
     signal.AddText(Set.symbol);
     signal.AddText(IntegerToString(Set.type));
-    signal.AddText(Set.price);
-    signal.AddText(Set.stopLoss);
-    signal.AddText(Set.takeProfits);
-    signal.AddText(Set.posSize);
-    signal.AddText(Set.magicNumber);
+    signal.AddText(DoubleToString(Set.price,5));
+    signal.AddText(DoubleToString(Set.stopLoss));
+    signal.AddText(DoubleToString(Set.takeProfits));
+    signal.AddText(DoubleToString(Set.posSize));
+    signal.AddText(IntegerToString(Set.magicNumber));
 
     if(signal.CountLines() == 7)
         return true;
@@ -140,7 +140,7 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage = 0, string tradeComment = NU
     {
         if(Get.m_type == OP_BUY)
         {
-            lastReceivedTradeTicker = OrderSend(Get.m_symbol,OP_BUY,Get.m_posSize,Bid,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
+            lastReceivedTradeTicker = OrderSendMQL4(Get.m_symbol,OP_BUY,Get.m_posSize,Bid,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
             if(lastReceivedTradeTicker != 0)
                return true;
             

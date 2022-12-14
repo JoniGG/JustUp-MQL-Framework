@@ -64,11 +64,11 @@ void CScreenshot::Take()
 
     if(FileIsExist(m_path + m_name + ".png"))
     {
-        while(FileIsExist(m_path + m_name + "_" + add + ".png"))
+        while(FileIsExist(m_path + m_name + "_" + IntegerToString(add) + ".png"))
         {
             add++;
         }
-        m_name += "_" + add;
+        m_name += "_" + IntegerToString(add);
     }
     
     string screenshotName = m_name + ".png";

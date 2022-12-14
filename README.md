@@ -30,17 +30,14 @@ All the files pushed to that branch will be reviewed, origanized, and pushed to 
 
 So I do recommend to pull from the *main branch* and push to the *open brach*. <br>
 
-## Last Update 2.1.0 | Changelog <br>
-All the libraries from this version are not compatible with the previous versions. <br>
-1. The CLogsFile was updated to the version 2.1 - See the change list below:
-    - Now the logs files has as extension `.log` instead of .txt
-    - Now instead of `error code`, it says `code`, to avoid confusion on logs that are not errors.
-2. Now the framework will verify that the autotrading and dlls are checked on the initialization, if are not, it will fail to initialize and `return false`, you can `bypass` this adjusting the settings.
-3. Now the internal functions `FrameworkStart()` and `FrameworkInit()` return a `boolean` result instead of just being `void`
-4. Fixed the bug of "no return" on the boolean methods of the `CTextFiles class` | Updated to 1.1
-5. Now the `CTextFiles class` supports different files extensions like .txt, .dat, & .log | Updated to 2.0, it is completely compatible with the previews version.
-5. Now the internal libraries have a defined version number. | Current version 1.0
-6. Added the class CLocalTradeCopy - it is a new version of the offlineTradeCopier package but with most advanced features. You can still use the old package for small copy signals.
+## Last Update 2.1.1 | Changelog <br>
+1. The framework now compiles in MQL5
+2. Some libraries are temporally disconnected of the framework in MQL5. The list is below:
+    - GetLots()
+    - localTradeCopyMQL5
+3. Some libraries were completely deleted from the framework in MQL5. They are still in MQL4. The list is below:
+    - AutoTradingMQL5
+    - LoginToAccount
 
 
 ## Libraries List
