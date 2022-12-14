@@ -1,6 +1,6 @@
 //--- This package will allow you to code trade from a terminal to other in the same computer
 #include "../classes/textFiles.mqh"
-#define _LOCAL_TRADE_COPIER_VERSION_ 1.0
+#define _OFFLINE_TRADE_COPIER_VERSION_ 1.0
 
 CTextFiles tcFile("tradeCopierSignal","frameworkFiles/", true);
 

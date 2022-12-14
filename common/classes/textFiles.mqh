@@ -1,19 +1,43 @@
 //--- This class is used to work with files
-#define _TEXT_FILES_CLASS_VERSION_ 1.0
-
 #include "../packages/printExtended.mqh"
+#define _TEXT_FILES_CLASS_VERSION_ 2.0
+
+enum ENUM_FILE_TYPE
+{
+    TXT = 0,
+    DAT = 1,
+    LOGS = 2
+};
 
 class CTextFiles
 {
 public:
 
     //--- Constructor
-    CTextFiles(string name, string path = NULL, bool commonFlag = false)
+    CTextFiles(string name, string path = NULL, bool commonFlag = false, ENUM_FILE_TYPE fileType = TXT)
     {
         m_hFile = INVALID_HANDLE;
         m_fileName = name;
         m_filePath = path;
         m_inCommonFolder = commonFlag;
+
+        if(fileType == TXT)
+        {
+            m_fileExtension = ".txt";
+        }
+        else if(fileType == DAT)
+        {
+            m_fileExtension = ".dat";
+        }
+        else if(fileType == LOGS)
+        {
+            m_fileExtension = ".logs";
+        }
+        else
+        {
+            m_fileExtension = ".txt";
+        }
+
     }
     bool Create(string baseText = "");
     bool AddText(string text);
@@ -29,13 +53,14 @@ public:
     //--- Getters
     string GetFileName() { return m_fileName; }
     string GetFilePath() { return m_filePath; }
-    string GetFileExtension() { return ".txt"; }
-    string GetFullPath() { return m_filePath + m_fileName + ".txt"; }
+    string GetFileExtension() { return m_fileExtension; }
+    string GetFullPath() { return m_filePath + m_fileName + m_fileExtension; }
     bool IsCommon() { return m_inCommonFolder; }
 
 private:
     string m_fileName;
     string m_filePath;
+    string m_fileExtension;
     bool m_inCommonFolder;
     int m_hFile;
 };
@@ -44,7 +69,7 @@ private:
 bool CTextFiles::Create(string baseText = "")
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
 
     if(m_inCommonFolder)
     {
@@ -55,7 +80,11 @@ bool CTextFiles::Create(string baseText = "")
         fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
     }
 
-    FileWrite(fileHandle, baseText);
+    if(!FileWrite(fileHandle, baseText))
+    {
+        FileClose(fileHandle);
+        return false;
+    }
 
     FileClose(fileHandle);
 
@@ -66,7 +95,7 @@ bool CTextFiles::Create(string baseText = "")
 bool CTextFiles::AddText(string text)
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
 
     if(m_inCommonFolder)
     {
@@ -78,7 +107,11 @@ bool CTextFiles::AddText(string text)
     }
 
     FileSeek(fileHandle, 0, SEEK_END);
-    FileWrite(fileHandle, text);
+    if(!FileWrite(fileHandle, text))
+    {
+        FileClose(fileHandle);
+        return false;
+    }
 
     FileClose(fileHandle);
 
@@ -89,7 +122,7 @@ bool CTextFiles::AddText(string text)
 string CTextFiles::Read()
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
     string text = "";
 
     if(m_inCommonFolder)
@@ -112,7 +145,7 @@ string CTextFiles::Read()
 string CTextFiles::ReadLine(int lineNum)
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
     string text = "";
 
     if(m_inCommonFolder)
@@ -139,7 +172,7 @@ string CTextFiles::ReadLine(int lineNum)
 int CTextFiles::CountLines()
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
     int lineCount = 0;
 
     if(m_inCommonFolder)
@@ -167,7 +200,7 @@ int CTextFiles::CountLines()
 bool CTextFiles::DeleteLine(int lineNum)
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
     int controller = 1;
     CTextFiles tempFile(m_fileName + "_temp", m_filePath, m_inCommonFolder);
 
@@ -175,7 +208,10 @@ bool CTextFiles::DeleteLine(int lineNum)
     {
         if(controller != lineNum)
         {
-            tempFile.AddText(ReadLine(controller));
+            if(!tempFile.AddText(ReadLine(controller)))
+            {
+                return false;
+            }
         }
         controller++;
     }
@@ -194,7 +230,7 @@ bool CTextFiles::DeleteLine(int lineNum)
 int CTextFiles::GetLinePosition(string textToFind)
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
     int lineCount = 1;
     int controller = 1;
 
@@ -217,16 +253,24 @@ int CTextFiles::GetLinePosition(string textToFind)
 bool CTextFiles::Rename(string newName)
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
-    string newFullPath = m_filePath + newName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
+    string newFullPath = m_filePath + newName + m_fileExtension;
 
     if(m_inCommonFolder)
     {
         fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
+        if(fileHandle == INVALID_HANDLE)
+        {
+            return false;
+        }
     }
     else
     {
         fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
+        if(fileHandle == INVALID_HANDLE)
+        {
+            return false;
+        }
     }
 
     FileClose(fileHandle);
@@ -240,16 +284,24 @@ bool CTextFiles::Rename(string newName)
 bool CTextFiles::Move(string newPath, bool deleteFolder = false)
 {
     int fileHandle = INVALID_HANDLE;
-    string fullPath = m_filePath + m_fileName + ".txt";
-    string newFullPath = newPath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
+    string newFullPath = newPath + m_fileName + m_fileExtension;
 
     if(m_inCommonFolder)
     {
         fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
+        if(fileHandle == INVALID_HANDLE)
+        {
+            return false;
+        }
     }
     else
     {
         fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
+        if(fileHandle == INVALID_HANDLE)
+        {
+            return false;
+        }
     }
 
     FileClose(fileHandle);
@@ -270,15 +322,21 @@ bool CTextFiles::Move(string newPath, bool deleteFolder = false)
 //--- Deletes the file
 bool CTextFiles::Delete()
 {
-    string fullPath = m_filePath + m_fileName + ".txt";
+    string fullPath = m_filePath + m_fileName + m_fileExtension;
 
     if(m_inCommonFolder)
     {
-        FileDelete(fullPath, FILE_COMMON);
+        if(!FileDelete(fullPath, FILE_COMMON))
+        {
+            return false;
+        }
     }
     else
     {
-        FileDelete(fullPath);
+        if(!FileDelete(fullPath))
+        {
+            return false;
+        }
     }
 
     return true;

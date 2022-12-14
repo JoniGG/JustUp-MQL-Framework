@@ -1,13 +1,16 @@
 //--- This library will include the 4 main libraries of the framework workload. MQL4
 #include "../../Main.mqh"
+#define _WORKLOAD_MQL4_CLASS_VERSION_ 1.0
 
 //--- Place in the beginning of the OnStart() function.
-void FrameworkStart()
+bool FrameworkStart()
 {
     Print("Loading " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "...");
     Print(_FRAMEWORK_NAME_ + " loaded successfully!");
+    return true;
 }
 
+//---------------------------------------------------------------------------------------------|
 //--- Place at the end of the OnStart() function.
 void FrameworkStop()
 {
@@ -15,16 +18,32 @@ void FrameworkStop()
     Print(_FRAMEWORK_NAME_ + " unloaded successfully!");
 }
 
+//---------------------------------------------------------------------------------------------|
 //--- Place in the beginning of the OnInit() function.
-void FrameworkInit()
+bool FrameworkInit()
 {
     Print("Initializing " + _FRAMEWORK_NAME_ + " v" + _FRAMEWORK_VERSION_STRING_ + "...");
 
-    //... Your code here
-
+    if(!SETTING_BYPASS_VERIFICATIONS)
+    {
+        //--- Framework Verifications
+        if(!IsTradeAllowed())
+        {
+            Print("INITIALIZATION ERROR: Trading is not allowed in this account!");
+            return false;
+        }
+        if(!IsDllsAllowed())
+        {
+            Print("INITIALIZATION ERROR: DLLs are not allowed in this account!");
+            return false;
+        }
+    }
+    
     Print(_FRAMEWORK_NAME_ + " initialized successfully!");
+    return true;
 }
 
+//---------------------------------------------------------------------------------------------|
 //--- Place at the beginning of the Deinit() function.
 void FrameworkDeInit()
 {
@@ -35,6 +54,7 @@ void FrameworkDeInit()
     Print(_FRAMEWORK_NAME_ + " deinitialized successfully!");
 }
 
+//---------------------------------------------------------------------------------------------|
 //--- Place at the beginning of the OnTick() function.
 void FrameworkRun()
 {
@@ -43,6 +63,7 @@ void FrameworkRun()
 
 }
 
+//---------------------------------------------------------------------------------------------|
 //--- Place at the beginning of the OnChartEvent() function.
 void FrameworkOnChart()
 {

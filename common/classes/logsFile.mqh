@@ -8,7 +8,7 @@
 #ifdef __MQL5__
 #include "../dics/errorDescriptionMQL5.mqh"
 #endif
-#define _LOGS_FILE_CLASS_VERSION_ 2.0
+#define _LOGS_FILE_CLASS_VERSION_ 2.1
 
 enum ENUM_LOG_MODE
 {
@@ -25,7 +25,7 @@ public:
 
     CLogsFile(string name = "Logs", string path = NULL, bool inCommon = false)
     {
-        m_name = name + ".txt";
+        m_name = name + ".log";
         m_path = path;
         m_inCommon = inCommon;
     }

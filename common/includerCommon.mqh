@@ -10,6 +10,7 @@
 #include "classes/newCandle.mqh"
 #include "classes/screenShot.mqh"
 #include "classes/textFiles.mqh"
+#include "classes/localTradeCopy.mqh"
 
 //--- Dictionaries
 #include "dics/timeRelated.mqh"
