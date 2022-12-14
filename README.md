@@ -20,6 +20,7 @@ _No collaborators yet._ <br>
 Other public libraries were included into this framework, all the credits will be listed below: <br>
 - @szagar in [GitHub](https://github.com/szagar) <br>
 - @eromawyn in [GitHub](https://github.com/eromawyn) <br>
+- @sergeylukin in [Github](https://github.com/sergeylukin)
 
 ## Colaborate <br>
 If you want to collaborate with the project feel free to contact me at  <br>
