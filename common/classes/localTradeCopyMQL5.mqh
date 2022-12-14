@@ -2,6 +2,7 @@
 //--- This will be a most extended and advanced version, however, you can keep using the old one for small projects
 #include "textFiles.mqh"
 #include "../packages/printExtended.mqh"
+#include <Trade/Trade.mqh>
 
 #ifdef __MQL5__
     #include "../packages/Mql4InMql5.mqh"
@@ -76,7 +77,7 @@ public:
 private:
     ENUM_LOCAL_COPY_MODE m_mode;
     int m_identifier;
-    int lastReceivedTradeTicker;
+    ulong lastReceivedTradeTicker;
 };
 
 //--- This function will send a signal to the receiver
@@ -136,43 +137,20 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
    if(m_mode != MODE_RECEIVER)
         return false;
    
-   MqlTradeRequest request;
-   request.deviation = maxSlippage;
-   request.comment = tradeComment;
-   request.sl = Get.m_stopLoss;
-   request.tp = Get.m_takeProfits;
-   request.symbol = Get.m_symbol;
-   request.volume = Get.m_posSize;
-   request.magic = Get.m_magicNumber;
-   
-   MqlTradeResult result;
-   
-   if(Get.m_type == 0)
-      request.type = ORDER_TYPE_BUY;
-   if(Get.m_type == 1)
-      request.type = ORDER_TYPE_SELL;
-   if(Get.m_type == 2)
-      request.type = ORDER_TYPE_BUY_LIMIT;
-   if(Get.m_type == 3)
-      request.type = ORDER_TYPE_SELL_LIMIT;
-   if(Get.m_type == 4)
-      request.type = ORDER_TYPE_BUY_STOP;
-   if(Get.m_type == 5)
-      request.type = ORDER_TYPE_SELL_STOP;
-      
-   request.price = Get.m_price;
-   request.type_filling = ORDER_FILLING_IOC;
+   CTrade trade;
    
    
    //--- On new trade event
    if(Get.m_signalMode == MODE_NEW_TRADE)
     {
-        request.action = TRADE_ACTION_DEAL;
         
         if(Get.m_type == ORDER_TYPE_BUY)
         {
-            request.price = SymbolInfoDouble(Get.m_symbol,SYMBOL_BID);
-            lastReceivedTradeTicker = OrderSend(request, result);
+            trade.SetDeviationInPoints(1000);
+            if(!trade.PositionOpen(Get.m_symbol,ORDER_TYPE_BUY,Get.m_posSize,SymbolInfoDouble(Get.m_symbol,SYMBOL_ASK),Get.m_stopLoss,Get.m_takeProfits,tradeComment))
+               return false;
+               
+            lastReceivedTradeTicker = trade.ResultOrder();
             if(lastReceivedTradeTicker != 0)
                return true;
             
@@ -180,8 +158,11 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
         }
         else if(Get.m_type == ORDER_TYPE_SELL)
         {
-            request.price = SymbolInfoDouble(Get.m_symbol,SYMBOL_ASK);
-            lastReceivedTradeTicker = OrderSend(request, result);
+            trade.SetDeviationInPoints(1000);
+            if(!trade.PositionOpen(Get.m_symbol,ORDER_TYPE_SELL,Get.m_posSize,SymbolInfoDouble(Get.m_symbol,SYMBOL_BID),Get.m_stopLoss,Get.m_takeProfits,tradeComment))
+               return false;
+            
+            lastReceivedTradeTicker = trade.ResultOrder();
             if(lastReceivedTradeTicker != 0)
             {
                return true;
@@ -191,7 +172,11 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
         
         else if(Get.m_type == ORDER_TYPE_BUY_LIMIT)
         {
-            lastReceivedTradeTicker = OrderSend(request, result);
+            if(!trade.BuyLimit(Get.m_posSize,Get.m_price,Get.m_symbol,Get.m_stopLoss,Get.m_takeProfits,0,0,tradeComment))
+               return false;
+            
+            
+            lastReceivedTradeTicker = trade.ResultOrder();
             if(lastReceivedTradeTicker != 0)
             {
                return true;
@@ -200,7 +185,10 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
         }
         else if(Get.m_type == ORDER_TYPE_SELL_LIMIT)
         {
-            lastReceivedTradeTicker = OrderSend(request, result);
+            if(!trade.BuyLimit(Get.m_posSize,Get.m_price,Get.m_symbol,Get.m_stopLoss,Get.m_takeProfits,0,0,tradeComment))
+               return false;
+            
+            lastReceivedTradeTicker = trade.ResultOrder();
             if(lastReceivedTradeTicker != 0)
             {
                return true;
@@ -209,7 +197,10 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
         }
         else if(Get.m_type == ORDER_TYPE_BUY_STOP)
         {
-            lastReceivedTradeTicker = OrderSend(request, result);
+            if(!trade.BuyStop(Get.m_posSize,Get.m_price,Get.m_symbol,Get.m_stopLoss,Get.m_takeProfits,0,0,tradeComment))
+               return false;
+            
+            lastReceivedTradeTicker = trade.ResultOrder();
             if(lastReceivedTradeTicker != 0)
             {
                return true;
@@ -218,7 +209,10 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
         }
         else if(Get.m_type == ORDER_TYPE_SELL_STOP)
         {
-            lastReceivedTradeTicker = OrderSend(request, result);
+            if(!trade.SellStop(Get.m_posSize,Get.m_price,Get.m_symbol,Get.m_stopLoss,Get.m_takeProfits,0,0,tradeComment))
+               return false;
+            
+            lastReceivedTradeTicker = trade.ResultOrder();
             if(lastReceivedTradeTicker != 0)
             {
                return true;
@@ -226,102 +220,28 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
             return false;
         }
     }
-   
-   return false;
-}
-
-/*
-//--- This function will execute the signal
-bool LocalTradeCopy::ExecuteSignal(int maxSlippage = 0, string tradeComment = NULL)
-{
     
-    
-    MqlTradeRequest request;
-    
-    
-    if(Get.m_signalMode == MODE_NEW_TRADE)
-    {
-        if(Get.m_type == OP_BUY)
-        {
-            lastReceivedTradeTicker = OrderSendMQL4(Get.m_symbol,OP_BUY,Get.m_posSize,Bid,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
-            if(lastReceivedTradeTicker != 0)
-               return true;
-            
-            return false;
-        }
-        else if(Get.m_type == OP_SELL)
-        {
-            lastReceivedTradeTicker = OrderSend(Get.m_symbol,OP_SELL,Get.m_posSize,Ask,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
-            if(lastReceivedTradeTicker != 0)
-               return true;
-            
-            return false;
-        }
-        else if(Get.m_type == OP_BUYLIMIT)
-        {
-            lastReceivedTradeTicker = OrderSend(Get.m_symbol,OP_BUYLIMIT,Get.m_posSize,Get.m_price,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
-            if(lastReceivedTradeTicker != 0)
-               return true;
-            
-            return false;
-        }
-        else if(Get.m_type == OP_SELLLIMIT)
-        {
-            lastReceivedTradeTicker = OrderSend(Get.m_symbol,OP_SELLLIMIT,Get.m_posSize,Get.m_price,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
-            if(lastReceivedTradeTicker != 0)
-               return true;
-            
-            return false;
-        }
-        else if(Get.m_type == OP_BUYSTOP)
-        {
-            lastReceivedTradeTicker = OrderSend(Get.m_symbol,OP_BUYSTOP,Get.m_posSize,Get.m_price,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
-            if(lastReceivedTradeTicker != 0)
-               return true;
-            
-            return false;
-        }
-        else if(Get.m_type == OP_SELLSTOP)
-        {
-            lastReceivedTradeTicker = OrderSend(Get.m_symbol,OP_SELLSTOP,Get.m_posSize,Get.m_price,maxSlippage,Get.m_stopLoss,Get.m_takeProfits,tradeComment,Get.m_magicNumber,0,0);
-            if(lastReceivedTradeTicker != 0)
-               return true;
-            
-            return false;
-        }
-    }
     else if(Get.m_signalMode == MODE_TRADE_MODIFY)
     {
-        if(OrderSelect(lastReceivedTradeTicker ,SELECT_BY_TICKET))
-        {
-               if(OrderModify(OrderTicket(),OrderOpenPrice(),Get.m_stopLoss,Get.m_takeProfits,0,0))
-                     return true;
-        }
+         if(!OrderSelect(lastReceivedTradeTicker))
+            return false;
+            
+         double openPrice = OrderGetDouble(ORDER_PRICE_OPEN);
+         
+         if(!trade.OrderModify(lastReceivedTradeTicker,openPrice,Get.m_stopLoss,Get.m_takeProfits,0,0,0))
+            return false;
     }
     else if(Get.m_signalMode == MODE_TRADE_DELETE)
     {
-        if(OrderSelect(lastReceivedTradeTicker ,SELECT_BY_TICKET))
-        {
-               if(OrderDelete(OrderTicket(),0))
-                     return true;
-        }
+        if(!trade.OrderDelete(lastReceivedTradeTicker))
+            return false;
     }
     else if(Get.m_signalMode == MODE_TRADE_CLOSE)
     {
-        if(OrderSelect(lastReceivedTradeTicker ,SELECT_BY_TICKET))
-        {
-               if(OrderType() == OP_BUY)
-               {
-                     if(OrderClose(OrderTicket(),OrderLots(),Ask,0,0))
-                        return true;
-               }
-                else if(OrderType() == OP_SELL)
-                {
-                        if(OrderClose(OrderTicket(),OrderLots(),Bid,0,0))
-                            return true;
-                }
-        }
+        if(!trade.PositionClose(lastReceivedTradeTicker))
+            return false;
+        
     }
-        return false;
+   
+   return false;
 }
-*/

@@ -9,4 +9,4 @@
 #include "common/functions/autoTradingMQL5.mqh"
 
 //--- Fixing
-//#include "common/classes/localTradeCopyMQL5.mqh"
+#include "common/classes/localTradeCopyMQL5.mqh"
