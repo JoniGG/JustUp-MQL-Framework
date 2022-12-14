@@ -52,24 +52,24 @@ public:
             {
                 ENUM_LOCAL_SENDING_MODE m_signalMode;
                 string m_symbol;
-                int m_type;
-                string m_price;
+                ENUM_ORDER_TYPE m_type;
+                double m_price;
                 double m_stopLoss;
                 double m_takeProfits;
                 double m_posSize;
-                int m_magicNumber;
+                ulong m_magicNumber;
             } Get;
 
             struct LocalSendSignal
             {
                 ENUM_LOCAL_SENDING_MODE signalMode;
                 string symbol;
-                int type;
-                string price;
+                ENUM_ORDER_TYPE type;
+                double price;
                 double stopLoss;
                 double takeProfits;
                 double posSize;
-                int magicNumber;
+                ulong magicNumber;
             } Set;
             
             
@@ -118,12 +118,12 @@ bool LocalTradeCopy::RefreshSignals()
 
     Get.m_signalMode = TranslateSignal(signal2.ReadLine(1));
     Get.m_symbol = signal2.ReadLine(2);
-    Get.m_type = StringToInteger(signal2.ReadLine(3));
-    Get.m_price = signal2.ReadLine(4);
+    Get.m_type = ENUM_ORDER_TYPE(signal2.ReadLine(3));
+    Get.m_price = (double)signal2.ReadLine(4);
     Get.m_stopLoss = StringToDouble(signal2.ReadLine(5));
     Get.m_takeProfits = StringToDouble(signal2.ReadLine(6));
     Get.m_posSize = StringToDouble(signal2.ReadLine(7));
-    Get.m_magicNumber = StringToInteger(signal2.ReadLine(8));
+    Get.m_magicNumber = ulong(signal2.ReadLine(8));
 
     signal2.Delete();
     
@@ -131,10 +131,113 @@ bool LocalTradeCopy::RefreshSignals()
 }
 
 //--- This function will execute the signal
+bool LocalTradeCopy::ExecuteSignal(int maxSlippage=0,string tradeComment=NULL)
+{
+   if(m_mode != MODE_RECEIVER)
+        return false;
+   
+   MqlTradeRequest request;
+   request.deviation = maxSlippage;
+   request.comment = tradeComment;
+   request.sl = Get.m_stopLoss;
+   request.tp = Get.m_takeProfits;
+   request.symbol = Get.m_symbol;
+   request.volume = Get.m_posSize;
+   request.magic = Get.m_magicNumber;
+   
+   MqlTradeResult result;
+   
+   if(Get.m_type == 0)
+      request.type = ORDER_TYPE_BUY;
+   if(Get.m_type == 1)
+      request.type = ORDER_TYPE_SELL;
+   if(Get.m_type == 2)
+      request.type = ORDER_TYPE_BUY_LIMIT;
+   if(Get.m_type == 3)
+      request.type = ORDER_TYPE_SELL_LIMIT;
+   if(Get.m_type == 4)
+      request.type = ORDER_TYPE_BUY_STOP;
+   if(Get.m_type == 5)
+      request.type = ORDER_TYPE_SELL_STOP;
+      
+   request.price = Get.m_price;
+   request.type_filling = ORDER_FILLING_IOC;
+   
+   
+   //--- On new trade event
+   if(Get.m_signalMode == MODE_NEW_TRADE)
+    {
+        request.action = TRADE_ACTION_DEAL;
+        
+        if(Get.m_type == ORDER_TYPE_BUY)
+        {
+            request.price = SymbolInfoDouble(Get.m_symbol,SYMBOL_BID);
+            lastReceivedTradeTicker = OrderSend(request, result);
+            if(lastReceivedTradeTicker != 0)
+               return true;
+            
+            return false;
+        }
+        else if(Get.m_type == ORDER_TYPE_SELL)
+        {
+            request.price = SymbolInfoDouble(Get.m_symbol,SYMBOL_ASK);
+            lastReceivedTradeTicker = OrderSend(request, result);
+            if(lastReceivedTradeTicker != 0)
+            {
+               return true;
+            }
+            return false;
+        }
+        
+        else if(Get.m_type == ORDER_TYPE_BUY_LIMIT)
+        {
+            lastReceivedTradeTicker = OrderSend(request, result);
+            if(lastReceivedTradeTicker != 0)
+            {
+               return true;
+            }
+            return false;
+        }
+        else if(Get.m_type == ORDER_TYPE_SELL_LIMIT)
+        {
+            lastReceivedTradeTicker = OrderSend(request, result);
+            if(lastReceivedTradeTicker != 0)
+            {
+               return true;
+            }
+            return false;
+        }
+        else if(Get.m_type == ORDER_TYPE_BUY_STOP)
+        {
+            lastReceivedTradeTicker = OrderSend(request, result);
+            if(lastReceivedTradeTicker != 0)
+            {
+               return true;
+            }
+            return false;
+        }
+        else if(Get.m_type == ORDER_TYPE_SELL_STOP)
+        {
+            lastReceivedTradeTicker = OrderSend(request, result);
+            if(lastReceivedTradeTicker != 0)
+            {
+               return true;
+            }
+            return false;
+        }
+    }
+   
+   return false;
+}
+
+/*
+//--- This function will execute the signal
 bool LocalTradeCopy::ExecuteSignal(int maxSlippage = 0, string tradeComment = NULL)
 {
-    if(m_mode != MODE_RECEIVER)
-        return false;
+    
+    
+    MqlTradeRequest request;
+    
     
     if(Get.m_signalMode == MODE_NEW_TRADE)
     {
@@ -221,3 +324,4 @@ bool LocalTradeCopy::ExecuteSignal(int maxSlippage = 0, string tradeComment = NU
     }
         return false;
 }
+*/

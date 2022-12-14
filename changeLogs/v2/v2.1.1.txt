@@ -1,0 +1,7 @@
+1. The framework now compiles in MQL5
+2. Some libraries are temporally disconnected of the framework in MQL5. The list is below:
+    - GetLots()
+    - localTradeCopyMQL5
+3. Some libraries were completely deleted from the framework in MQL5. They are still in MQL4. The list is below:
+    - AutoTradingMQL5
+    - LoginToAccount

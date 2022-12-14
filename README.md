@@ -31,14 +31,8 @@ All the files pushed to that branch will be reviewed, origanized, and pushed to 
 
 So I do recommend to pull from the *main branch* and push to the *open brach*. <br>
 
-## Last Update 2.1.1 | Changelog <br>
-1. The framework now compiles in MQL5
-2. Some libraries are temporally disconnected of the framework in MQL5. The list is below:
-    - GetLots()
-    - localTradeCopyMQL5
-3. Some libraries were completely deleted from the framework in MQL5. They are still in MQL4. The list is below:
-    - AutoTradingMQL5
-    - LoginToAccount
+## Last Update 2.1.2 | Changelog <br>
+1. The library SetAutoTrading was re-added to the framework. Now it is available in both versions
 
 
 ## Libraries List
