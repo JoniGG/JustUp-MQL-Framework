@@ -8,4 +8,4 @@
 #include "common/functions/autoTradingMQL4.mqh"
 #include "common/functions/accountAuth.mqh"
 #include "common/classes/localTradeCopyMQL4.mqh"
-#include "common/functions/getLots.mqh"
+#include "common/functions/getLotsMQL4.mqh"
