@@ -36,10 +36,10 @@ ENUM_LOCAL_SENDING_MODE TranslateSignal(string m_signalModeText)
         return MODE_NEW_TRADE;
 }
 
-class LocalTradeCopy
+class CLocalTradeCopy
 {
 public:
-            LocalTradeCopy(ENUM_LOCAL_COPY_MODE mode, int identifier)
+            CLocalTradeCopy(ENUM_LOCAL_COPY_MODE mode, int identifier)
             {
                 m_mode = mode;
                 m_identifier = identifier;
@@ -80,7 +80,7 @@ private:
 };
 
 //--- This function will send a signal to the receiver
-bool LocalTradeCopy::SendSignal()
+bool CLocalTradeCopy::SendSignal()
 {
     if(m_mode != MODE_SENDER)
         return false;
@@ -106,7 +106,7 @@ bool LocalTradeCopy::SendSignal()
 }
 
 //--- This function will get a signal from the sender
-bool LocalTradeCopy::RefreshSignals()
+bool CLocalTradeCopy::RefreshSignals()
 {
     if(m_mode != MODE_RECEIVER)
         return false;
@@ -131,7 +131,7 @@ bool LocalTradeCopy::RefreshSignals()
 }
 
 //--- This function will execute the signal
-bool LocalTradeCopy::ExecuteSignal(int maxSlippage = 0, string tradeComment = NULL)
+bool CLocalTradeCopy::ExecuteSignal(int maxSlippage = 0, string tradeComment = NULL)
 {
     if(m_mode != MODE_RECEIVER)
         return false;

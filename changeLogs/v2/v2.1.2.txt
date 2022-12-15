@@ -1,0 +1,1 @@
+1. The library SetAutoTrading was re-added to the framework. Now it is available in both versions

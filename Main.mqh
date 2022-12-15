@@ -2,8 +2,8 @@
 #define _FRAMEWORK_AUTHOR_ "Jonathan Fernandez"
 #define _FRAMEWORK_WEBSITE_ "https://tech.justup.us/framework/"
 #define _FRAMEWORK_EMAIL_ "framework@justup.us"
-#define _FRAMEWORK_VERSION_STRING_ "2.1.0"
-#define _FRAMEWORK_VERSION_NUMBER_ 2.1.0
+#define _FRAMEWORK_VERSION_STRING_ "2.2.0"
+#define _FRAMEWORK_VERSION_NUMBER_ 2.2.0
 #define _FRAMEWORK_VERSION_DATE_ "2022.12.13"
 
 //--- Main Libraries

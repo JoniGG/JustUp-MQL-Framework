@@ -10,15 +10,19 @@
 #include "classes/newCandle.mqh"
 #include "classes/screenShot.mqh"
 #include "classes/textFiles.mqh"
+#include "classes/candlesticksPatterns.mqh"
 
 //--- Dictionaries
 #include "dics/timeRelated.mqh"
 #include "dics/alphabet.mqh"
 #include "dics/propFirms.mqh"
 #include "dics/keyboardKeys.mqh"
+#include "dics/timeframes.mqh"
 
 //--- Enums
 #include "enums/timeRelated.mqh"
+#include "enums/candlesticksPatterns.mqh"
+#include "enums/timeframes.mqh"
 
 //--- Functions
 
