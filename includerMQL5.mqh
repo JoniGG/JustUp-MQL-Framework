@@ -7,6 +7,7 @@
 //--- External
 #include "common/packages/Mql4InMql5.mqh"
 #include "common/functions/autoTradingMQL5.mqh"
+#include "common/packages/Mql4OrdersHandlerMQL5.mqh"
+#include "common/classes/localTradeCopyMQL5.mqh"
 
 //--- Fixing
-#include "common/classes/localTradeCopyMQL5.mqh"

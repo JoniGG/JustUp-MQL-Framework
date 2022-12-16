@@ -31,13 +31,10 @@ All the files pushed to that branch will be reviewed, origanized, and pushed to 
 
 So I do recommend to pull from the *main branch* and push to the *open brach*. <br>
 
-## Last Update 2.2.0 | Changelog <br>
-1. The class CCandlesticksPatterns was added. It depends on the Candlestick patterns enumerator - This class will detect if a given candlestick pattern was formed on an specific symbol & timeframes.
-2. The CandlesticksPatterns enumeration was added. It have a set of 37 different candlestick patterns formed for 1, 2, 3 & 4 candles.
-3. The Timeframes enumation was added - It will make more friendly for the final user to select a timeframe from an extern/input variable.
-4. The timeframe dictionary was added - It includes a set of function to convert the timeframes from the Timeframe enumeration type to ENUM_TIMEFRAMES and string types.
-5. The class for handle local trade copy changed it name from `LocalTradeCopy` to `CLocalTradeCopy` - Small incompatibility with the previews version
-6. Added the MQL5 native `CTrade` class to MQL4. At this moment it is an alpha version of the class and have only incorporated the initial-compatible methods, will be updated in the future.
+## Last Update 2.3.0 | Changelog <br>
+- Added support in MQL5 for getLots function library.
+- Added the function ChartCloseALL() that closes all the chart, except the current if specified.
+- Added a function package that replicates the OrderSend(), OrderModify(), OrderDelete(), and OrderClose() from MQL4 in MQL5. More functions will be added on next updates.
 
 
 ## Libraries List

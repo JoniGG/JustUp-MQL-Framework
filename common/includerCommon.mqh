@@ -25,6 +25,8 @@
 #include "enums/timeframes.mqh"
 
 //--- Functions
+#include "functions/chartCloseAll.mqh"
+#include "functions/getLots.mqh"
 
 //--- Packages
 #include "packages/compareVars.mqh"
